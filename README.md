@@ -23,9 +23,7 @@
         - Mappers
         - Testing
     4. Domain
-        - JDBC Repo
-            -
-        -
+        - Service 
         - Testing 
             - Mockito or Doubles 
     5. Controller 
