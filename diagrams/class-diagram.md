@@ -3,7 +3,8 @@
 * src
     * main
         * java
-            *learn.mastery
+            * learn.mastery
+
                 * models
                     * Encounter
                         * Fields:
@@ -70,7 +71,7 @@
                         * Edit();
                         * delete();
           
-                *domain
+                * domain
                     * Encounter Service
                         * findAll();
                         * findById();
