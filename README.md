@@ -18,11 +18,14 @@
         - Dependencies 
         - application.properties
         - Test application.properties
-    2. Models 
+    2. Models
     3. Data / Repository Layer (JDBC Template Repositories)
         - Mappers
         - Testing
-    4. Domain 
+    4. Domain
+        - JDBC Repo
+            -
+        -
         - Testing 
             - Mockito or Doubles 
     5. Controller 
@@ -83,7 +86,7 @@
             - Login
             - SignUp
             - Update
-            - Delete (maybe ?) 
+            - Delete 
         - App
             - State(s) being managed
             - Functions 
