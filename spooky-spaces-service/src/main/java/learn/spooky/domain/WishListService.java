@@ -27,6 +27,7 @@ public class WishListService {
     }
 
     //find by username
+    // validation done in the controller
     public WishList findByUsername(String username) {return  repository.findByUsername(username);}
 
     //add
@@ -53,7 +54,6 @@ public class WishListService {
                 }
             }
         }
-
         result.setPayload(repository.add(wishList));
         return result;
     }
@@ -99,5 +99,4 @@ public class WishListService {
         }
         return result;
     }
-
 }

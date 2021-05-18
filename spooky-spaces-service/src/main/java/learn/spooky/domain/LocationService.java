@@ -27,6 +27,7 @@ public class LocationService {
     }
 
     //FindById
+    //Validation for this is done in the controller
     public Location findById(int locationId){
         return repository.findById(locationId);
     }
@@ -57,7 +58,6 @@ public class LocationService {
                 }
             }
         }
-
         result.setPayload(repository.add(location));
         return result;
     }

@@ -28,7 +28,7 @@ public class LocationController {
     @GetMapping("/{locationId}")
     public ResponseEntity<Location> findById(@PathVariable int locationId){
         Location location = service.findById(locationId);
-        if (location == null) {
+        if (location == null) { //make sure there is a location with that id
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(location);
@@ -45,11 +45,12 @@ public class LocationController {
 
     @PutMapping("/{locationId}")
     public ResponseEntity<Object> update(@PathVariable int locationId, @RequestBody Location location) {
-        if (locationId != location.getLocationId()) {
+        if (locationId != location.getLocationId()) { //make sure location id exists
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
 
         Result<Location> result = service.update(location);
+
         if (result.isSuccess()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

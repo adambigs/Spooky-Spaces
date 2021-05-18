@@ -4,6 +4,7 @@ import javax.validation.constraints.*;
 
 public class Location {
 
+    //basic validations, the variables cannot be null/empty
     @NotBlank(message = "Address is required")
     public String address;
 

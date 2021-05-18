@@ -45,7 +45,7 @@ public class WishListController {
 
     @PutMapping("/{wishlistId}")
     public ResponseEntity<Object> update(@PathVariable int wishListId, @RequestBody WishList wishList) {
-        if (wishListId != wishList.getWishListId()) {
+        if (wishListId != wishList.getWishListId()) { //make sure wishlist id exists
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
 

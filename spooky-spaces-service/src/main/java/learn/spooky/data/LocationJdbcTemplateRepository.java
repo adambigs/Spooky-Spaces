@@ -20,7 +20,7 @@ public class LocationJdbcTemplateRepository implements  LocationRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    //Find All
+    //Find All locations
     @Override
     public List<Location> findAll() {
 
@@ -30,7 +30,8 @@ public class LocationJdbcTemplateRepository implements  LocationRepository {
         return jdbcTemplate.query(sql, new LocationMapper());
     }
 
-    //Find by Id
+    //Find location by id
+    //Might be helpful to find by name?
     @Override
     public Location findById(int locationId) {
 
@@ -43,7 +44,7 @@ public class LocationJdbcTemplateRepository implements  LocationRepository {
                 .orElse(null);
     }
 
-    //Add
+    //Add a new location to the database
     @Override
     public Location add(Location location) {
 
@@ -69,7 +70,7 @@ public class LocationJdbcTemplateRepository implements  LocationRepository {
         return location;
     }
 
-    //Update
+    //Update info for a location
     @Override
     public boolean update(Location location) {
 
@@ -90,7 +91,8 @@ public class LocationJdbcTemplateRepository implements  LocationRepository {
                 location.getLocationId()) > 0;
     }
 
-    //Delete
+    //Delete a location
+    //This may case conflicts, probably needs to be deleted from the encounters table first
     @Override
     public boolean deleteById(int locationId) {
         return jdbcTemplate.update(

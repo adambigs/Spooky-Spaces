@@ -5,6 +5,7 @@ import javax.validation.constraints.NotBlank;
 
 public class WishList {
 
+    //Basic validations, the variables cannot be null/empty
     @Min(value = 0, message = "Wish list id must be positive")
     private int wishListId;
 

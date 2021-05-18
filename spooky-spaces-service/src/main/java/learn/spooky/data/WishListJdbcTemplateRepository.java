@@ -20,7 +20,7 @@ public class WishListJdbcTemplateRepository implements WishListRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    //Find All
+    //Find All users with a wish list
     @Override
     public List<WishList> findAll() {
         final String sql = "select wishlist_id, username "
@@ -30,7 +30,7 @@ public class WishListJdbcTemplateRepository implements WishListRepository {
     }
 
 
-    //Find by Username
+    //Find the wishlist id that is associated with a given username
     @Override
     public WishList findByUsername(String username) {
         final String sql = "select wishlist_id, username "
@@ -42,7 +42,7 @@ public class WishListJdbcTemplateRepository implements WishListRepository {
                 .orElse(null);
     }
 
-    //Add
+    //Add a username to the table, will create a wishlist_id
     @Override
     public WishList add(WishList wishList) {
         final String sql = "insert into wishlist (username)"
@@ -63,7 +63,8 @@ public class WishListJdbcTemplateRepository implements WishListRepository {
         return wishList;
     }
 
-    //Update
+    //Update ad username with an existing wishlist_id
+    //This will probably not be used and can be deleted later
     @Override
     public boolean update(WishList wishList) {
         final String sql = "update wishlist set "
@@ -75,7 +76,8 @@ public class WishListJdbcTemplateRepository implements WishListRepository {
                 wishList.getWishListId()) > 0;
     }
 
-    //Delete
+    //Delete a username from the table
+    //This may have a conflict, may have to delete from teh bridge table first
     @Override
     public boolean deleteByUsername(String username) {
         return jdbcTemplate.update(
