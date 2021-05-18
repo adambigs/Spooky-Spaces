@@ -2,46 +2,60 @@ drop database if exists spooky_spaces;
 create database spooky_spaces;
 use spooky_spaces;
 
-create table encounter_type (
-type_id int primary key auto_increment,
-type_name enum('visual', 'auditory', 'touch', 'temperature')
+CREATE TABLE encounter_type (
+    type_id INT PRIMARY KEY AUTO_INCREMENT,
+    type_name ENUM('visual', 'auditory', 'touch', 'temperature')
 );
 
-create table location (
-location_id int primary key auto_increment,
-location_name varchar(100),
-address varchar(100),
-latitude varchar(50),
-longitude varchar(50),
-image varchar(100)
+CREATE TABLE location (
+    location_id INT PRIMARY KEY AUTO_INCREMENT,
+    location_name VARCHAR(100),
+    address VARCHAR(100),
+    latitude VARCHAR(50),
+    longitude VARCHAR(50),
+    image VARCHAR(100)
 );
 
-create table encounter (
-encounter_id int primary key auto_increment,
-encounter_description varchar(2000),
-constraint fk_encounter_location_id
-foreign key (location_id)
-references location(location_id),
-constraint fk_encounter_type_id
-foreign key (type_id)
-references encounter_type(type_id)
+CREATE TABLE encounter (
+    encounter_id INT PRIMARY KEY AUTO_INCREMENT,
+    encounter_description VARCHAR(2000),
+    location_id INT,
+    type_id INT,
+    CONSTRAINT fk_encounter_location_id FOREIGN KEY (location_id)
+        REFERENCES location (location_id),
+    CONSTRAINT fk_encounter_type_id FOREIGN KEY (type_id)
+        REFERENCES encounter_type (type_id)
 );
 
-create table comments (
-comment_id int primary key auto_increment,
-username varchar(25),
-rating int,
-comment_text varchar(500)
+CREATE TABLE comments (
+    comment_id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(25),
+    rating INT,
+    comment_text VARCHAR(500)
 );
 
-create table encounter_comments (
-encounter_id int,
-comment_id int,
-constraint pk_encounter_comments
-primary key (encounter_id, comment_id),
-constraint fk_encounter_comments_encounter_id
-foreign key (encounter_id)
-references encounter(encounter_id),
-constraint fk_encounter_comments_comment_id
-foreign key (comment_id)
-references 
+CREATE TABLE encounter_comments (
+    encounter_id INT,
+    comment_id INT,
+    CONSTRAINT pk_encounter_comments PRIMARY KEY (encounter_id , comment_id),
+    CONSTRAINT fk_encounter_comments_encounter_id FOREIGN KEY (encounter_id)
+        REFERENCES encounter (encounter_id),
+    CONSTRAINT fk_encounter_comments_comment_id FOREIGN KEY (comment_id)
+        REFERENCES comments (comment_id)
+);
+
+CREATE TABLE wishlist (
+    wishlist_id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(25)
+);
+
+CREATE TABLE wishlist_location (
+    wishlist_id INT,
+    location_id INT,
+    CONSTRAINT pk_wishlist_location PRIMARY KEY (wishlist_id , location_id),
+    CONSTRAINT fk_wishlist_location_wishlist_id FOREIGN KEY (wishlist_id)
+        REFERENCES wishlist (wishlist_id),
+    CONSTRAINT fk_wishlist_location_location_id FOREIGN KEY (location_id)
+        REFERENCES location (location_id)
+);
+
