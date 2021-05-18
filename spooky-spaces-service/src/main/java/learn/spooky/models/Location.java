@@ -1,13 +1,39 @@
 package learn.spooky.models;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 import javax.validation.constraints.*;
+import java.util.Set;
 
 public class Location {
 
+    @NotBlank(message = "Address is required")
     public String address;
-    public String lattitude;
+
+    @NotBlank(message = "Latitude is required")
+    public String latitude;
+
+    @NotBlank(message = "Longitude is required")
     public String longitude;
+
+    @NotBlank(message = "Location Name is required")
     public String locationName;
+
+    @Min(value = 0, message = "Location id must be positive")
+    public int locationId;
+
+    public Location() {
+    }
+
+    public Location(@NotBlank(message = "Address is required") String address, @NotBlank(message = "Latitude is required") String latitude, @NotBlank(message = "Longitude is required") String longitude, @NotBlank(message = "Location Name is required") String locationName, @Min(value = 0, message = "Location id must be positive") int locationId) {
+        this.address = address;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.locationName = locationName;
+        this.locationId = locationId;
+    }
 
     public String getAddress() {
         return address;
@@ -17,12 +43,12 @@ public class Location {
         this.address = address;
     }
 
-    public String getLattitude() {
-        return lattitude;
+    public String getLatitude() {
+        return latitude;
     }
 
-    public void setLattitude(String lattitude) {
-        this.lattitude = lattitude;
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
     }
 
     public String getLongitude() {
@@ -41,5 +67,11 @@ public class Location {
         this.locationName = locationName;
     }
 
-    
+    public int getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(int locationId) {
+        this.locationId = locationId;
+    }
 }
