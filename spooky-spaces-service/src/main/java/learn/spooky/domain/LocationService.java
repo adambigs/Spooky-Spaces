@@ -26,6 +26,11 @@ public class LocationService {
         return repository.findAll();
     }
 
+    //FindById
+    public Location findById(int locationId){
+        return repository.findById(locationId);
+    }
+
     //Add
     public Result<Location> add(Location location) {
         Result<Location> result = new Result<>();

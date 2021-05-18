@@ -1,8 +1,6 @@
 package learn.spooky.data;
 
-import learn.spooky.data.mappers.LocationMapper;
 import learn.spooky.data.mappers.WishListMapper;
-import learn.spooky.models.Location;
 import learn.spooky.models.WishList;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -25,7 +23,6 @@ public class WishListJdbcTemplateRepository implements WishListRepository {
     //Find All
     @Override
     public List<WishList> findAll() {
-
         final String sql = "select wishlist_id, username "
                 + "from wishlist;";
 
@@ -33,10 +30,9 @@ public class WishListJdbcTemplateRepository implements WishListRepository {
     }
 
 
-    //Find by Id
+    //Find by Username
     @Override
     public WishList findByUsername(String username) {
-
         final String sql = "select wishlist_id, username "
                 + "from wishlist "
                 + "where username = ?;";
@@ -49,7 +45,6 @@ public class WishListJdbcTemplateRepository implements WishListRepository {
     //Add
     @Override
     public WishList add(WishList wishList) {
-
         final String sql = "insert into wishlist (username)"
                 + "values (?);";
 
@@ -71,8 +66,6 @@ public class WishListJdbcTemplateRepository implements WishListRepository {
     //Update
     @Override
     public boolean update(WishList wishList) {
-
-        // don't allow agency_id updates for now
         final String sql = "update wishlist set "
                 + "username = ? "
                 + "where wishlist_id = ?;";

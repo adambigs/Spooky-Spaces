@@ -26,6 +26,9 @@ public class WishListService {
         return repository.findAll();
     }
 
+    //find by username
+    public WishList findByUsername(String username) {return  repository.findByUsername(username);}
+
     //add
     public Result<WishList> add(WishList wishList) {
         Result<WishList> result = new Result<>();
