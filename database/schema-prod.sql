@@ -3,8 +3,7 @@ create database spooky_spaces;
 use spooky_spaces;
 
 CREATE TABLE encounter_type (
-    type_id INT PRIMARY KEY AUTO_INCREMENT,
-    type_name ENUM('visual', 'auditory', 'touch', 'temperature')
+    type_id INT 
 );
 
 CREATE TABLE location (
