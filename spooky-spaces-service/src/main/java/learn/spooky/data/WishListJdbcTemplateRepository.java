@@ -2,15 +2,15 @@ package learn.spooky.data;
 
 import learn.spooky.data.mappers.WishListMapper;
 import learn.spooky.models.WishList;
-import learn.spooky.models.WishList;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
-import java.util.List;
 
+@Repository
 public class WishListJdbcTemplateRepository implements WishListRepository {
 
     private final JdbcTemplate jdbcTemplate;
