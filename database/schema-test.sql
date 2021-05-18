@@ -3,7 +3,7 @@ create database spooky_spaces_test;
 use spooky_spaces_test;
 
 CREATE TABLE encounter_type (
-    type_id INT
+    type_id INT PRIMARY KEY
 );
 
 CREATE TABLE location (
@@ -30,17 +30,10 @@ CREATE TABLE comments (
     comment_id INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(25),
     rating INT,
-    comment_text VARCHAR(500)
-);
-
-CREATE TABLE encounter_comments (
+    comment_text VARCHAR(500),
     encounter_id INT,
-    comment_id INT,
-    CONSTRAINT pk_encounter_comments PRIMARY KEY (encounter_id , comment_id),
-    CONSTRAINT fk_encounter_comments_encounter_id FOREIGN KEY (encounter_id)
-        REFERENCES encounter (encounter_id),
-    CONSTRAINT fk_encounter_comments_comment_id FOREIGN KEY (comment_id)
-        REFERENCES comments (comment_id)
+    CONSTRAINT fk_comments_encounter_id FOREIGN KEY (encounter_id)
+        REFERENCES encounter (encounter_id)
 );
 
 CREATE TABLE wishlist (
@@ -57,4 +50,44 @@ CREATE TABLE wishlist_location (
     CONSTRAINT fk_wishlist_location_location_id FOREIGN KEY (location_id)
         REFERENCES location (location_id)
 );
+
+delimiter //
+create procedure set_known_good_state()
+begin
+
+insert into location 
+(location_name, address, latitude, longitude)
+values ('Pfister Hotel', '424 E Wisconsin Ave', '43.03956219', '-87.90551367');
+
+insert into encounter_type
+(type_id)
+values (1),(2);
+
+insert into encounter
+(encounter_description, location_id, type_id)
+values ('Built in the 19th century, the hotel is apparently haunted by its namesake, Charles Pfister, who likes to haunt MLB players staying in the hotel.', 1, 1);
+
+insert into comments
+(username, rating, comment_text)
+values ('cooldude69', '5', 'This place was so spooky. I was scared.');
+
+insert into wishlist
+(username)
+values ('cooldude69');
+
+insert into wishlist_location
+(wishlist_id, location_id)
+values(1,1);
+
+
+select w.username, l.location_name
+from wishlist_location wl
+left outer join location l on l.location_id = wl.location_id
+left outer join wishlist w on w.wishlist_id = wl.wishlist_id;
+
+
+end //
+delimiter ;
+
+
 
