@@ -24,15 +24,9 @@ public class Location {
     @Min(value = 0, message = "Location id must be positive")
     public int locationId;
 
-    public Location() {
-    }
+    public String locationImage;
 
-    public Location(@NotBlank(message = "Address is required") String address, @NotBlank(message = "Latitude is required") String latitude, @NotBlank(message = "Longitude is required") String longitude, @NotBlank(message = "Location Name is required") String locationName, @Min(value = 0, message = "Location id must be positive") int locationId) {
-        this.address = address;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.locationName = locationName;
-        this.locationId = locationId;
+    public Location() {
     }
 
     public String getAddress() {
@@ -73,5 +67,13 @@ public class Location {
 
     public void setLocationId(int locationId) {
         this.locationId = locationId;
+    }
+
+    public String getLocationImage() {
+        return locationImage;
+    }
+
+    public void setLocationImage(String locationImage) {
+        this.locationImage = locationImage;
     }
 }

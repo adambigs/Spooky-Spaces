@@ -24,7 +24,7 @@ public class LocationJdbcTemplateRepository implements  LocationRepository {
     @Override
     public List<Location> findAll() {
 
-        final String sql = "select location_id, address, latitude, longitude, location_name "
+        final String sql = "select location_id, location_name, address, latitude, longitude, image "
                 + "from location;";
 
         return jdbcTemplate.query(sql, new LocationMapper());
@@ -34,7 +34,7 @@ public class LocationJdbcTemplateRepository implements  LocationRepository {
     @Override
     public Location findById(int locationId) {
 
-        final String sql = "select location_id, address, latitude, longitude, location_name "
+        final String sql = "select location_id, location_name, address, latitude, longitude, image "
                 + "from location "
                 + "where location_id = ?;";
 
@@ -47,16 +47,17 @@ public class LocationJdbcTemplateRepository implements  LocationRepository {
     @Override
     public Location add(Location location) {
 
-        final String sql = "insert into location (address, latitude, longitude, location_name)"
-                + "values (?,?,?,?);";
+        final String sql = "insert into location (location_name, address, latitude, longitude, image)"
+                + "values (?,?,?,?,?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsAffected = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, location.getAddress());
-            ps.setString(2, location.getLatitude());
-            ps.setString(3, location.getLongitude());
-            ps.setString(4, location.getLocationName());
+            ps.setString(1, location.getLocationName());
+            ps.setString(2, location.getAddress());
+            ps.setString(3, location.getLatitude());
+            ps.setString(4, location.getLongitude());
+            ps.setString(5, location.getLocationImage());
             return ps;
         }, keyHolder);
 
@@ -74,10 +75,11 @@ public class LocationJdbcTemplateRepository implements  LocationRepository {
 
         // don't allow agency_id updates for now
         final String sql = "update location set "
+                + "location_name = ?, "
                 + "address = ?, "
                 + "latitude = ?, "
                 + "longitude = ?, "
-                + "location_name = ? "
+                + "image = ? "
                 + "where location_id = ?;";
 
         return jdbcTemplate.update(sql,
