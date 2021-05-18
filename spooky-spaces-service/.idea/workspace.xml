@@ -4,12 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32c5b95a-1034-4e34-b136-32781dbef65b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+    <list default="true" id="b632565d-b21d-4d7d-a23d-0f0759a043d2" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/learn/spooky_spaces/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/learn/spooky_spaces/controllers/EncounterController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/learn/spooky_spaces/data/EncounterJdbcTemplateRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/spooky-spaces-service.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/learn/spooky_spaces/controller/EncounterController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/learn/spooky_spaces/data/EncounterRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/learn/spooky_spaces/data/mappers/EncounterMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/spooky_spaces/data/mappers/EncounterMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/learn/spooky_spaces/domain/EncounterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/spooky_spaces/domain/EncounterService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/learn/spooky_spaces/models/Encounter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/spooky_spaces/models/Encounter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/learn/spooky_spaces/data/EncounterJdbcTemplateRepositoryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/learn/spooky_spaces/domain/EncounterServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +30,6 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -27,7 +37,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1siDopdRnxiDIySjdpmry5eTC7c" />
+  <component name="ProjectId" id="1siObKlXluWKO0BAc0xIKLV6ewE" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -36,29 +46,15 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
-  </component>
-  <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\bigel\Documents\Dev10\repos\Spooky-Spaces\Spooky-Spaces\spooky-spaces-service\src\test" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\bigel\Documents\Dev10\repos\Spooky-Spaces\Spooky-Spaces\spooky-spaces-service\src\test\resources" />
-    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="32c5b95a-1034-4e34-b136-32781dbef65b" name="Default Changelist" comment="" />
-      <created>1621346699831</created>
+      <changelist id="b632565d-b21d-4d7d-a23d-0f0759a043d2" name="Default Changelist" comment="" />
+      <created>1621352015567</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1621346699831</updated>
+      <updated>1621352015567</updated>
     </task>
     <servers />
   </component>
@@ -72,6 +68,5 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
