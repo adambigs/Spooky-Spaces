@@ -4,10 +4,26 @@ import javax.validation.constraints.*;
 
 public class Location {
 
+    //basic validations, the variables cannot be null/empty
+    @NotBlank(message = "Address is required")
     public String address;
-    public String lattitude;
+
+    @NotBlank(message = "Latitude is required")
+    public String latitude;
+
+    @NotBlank(message = "Longitude is required")
     public String longitude;
+
+    @NotBlank(message = "Location Name is required")
     public String locationName;
+
+    @Min(value = 0, message = "Location id must be positive")
+    public int locationId;
+
+    public String locationImage;
+
+    public Location() {
+    }
 
     public String getAddress() {
         return address;
@@ -17,12 +33,12 @@ public class Location {
         this.address = address;
     }
 
-    public String getLattitude() {
-        return lattitude;
+    public String getLatitude() {
+        return latitude;
     }
 
-    public void setLattitude(String lattitude) {
-        this.lattitude = lattitude;
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
     }
 
     public String getLongitude() {
@@ -41,5 +57,19 @@ public class Location {
         this.locationName = locationName;
     }
 
-    
+    public int getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(int locationId) {
+        this.locationId = locationId;
+    }
+
+    public String getLocationImage() {
+        return locationImage;
+    }
+
+    public void setLocationImage(String locationImage) {
+        this.locationImage = locationImage;
+    }
 }
