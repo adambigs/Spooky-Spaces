@@ -1,6 +1,8 @@
 package learn.spooky.data;
 
+import learn.spooky.data.mappers.LocationMapper;
 import learn.spooky.data.mappers.WishListMapper;
+import learn.spooky.models.Location;
 import learn.spooky.models.WishList;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.List;
 
 @Repository
 public class WishListJdbcTemplateRepository implements WishListRepository {
@@ -19,15 +22,26 @@ public class WishListJdbcTemplateRepository implements WishListRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    //Find All
+    @Override
+    public List<WishList> findAll() {
+
+        final String sql = "select wishlist_id, username "
+                + "from wishlist;";
+
+        return jdbcTemplate.query(sql, new WishListMapper());
+    }
+
+
     //Find by Id
     @Override
-    public WishList findById(int wishListId) {
+    public WishList findByUsername(String username) {
 
         final String sql = "select wishlist_id, username "
                 + "from wishlist "
-                + "where wishlist_id = ?;";
+                + "where username = ?;";
 
-        return jdbcTemplate.query(sql, new WishListMapper(), wishListId).stream()
+        return jdbcTemplate.query(sql, new WishListMapper(), username).stream()
                 .findFirst()
                 .orElse(null);
     }
@@ -70,9 +84,9 @@ public class WishListJdbcTemplateRepository implements WishListRepository {
 
     //Delete
     @Override
-    public boolean deleteById(int wishListId) {
+    public boolean deleteByUsername(String username) {
         return jdbcTemplate.update(
-                "delete from wishlist where wishlist_id = ?", wishListId) > 0;
+                "delete from wishlist where username = ?", username) > 0;
     }
 
 }

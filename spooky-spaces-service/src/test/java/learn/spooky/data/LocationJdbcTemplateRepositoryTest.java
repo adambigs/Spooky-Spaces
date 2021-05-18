@@ -61,5 +61,4 @@ public class LocationJdbcTemplateRepositoryTest {
         location.setLocationImage("Image.png");
         return location;
     }
-
 }

@@ -2,9 +2,15 @@ package learn.spooky.data;
 
 import learn.spooky.models.WishList;
 
+import java.util.List;
+
 public interface WishListRepository {
+
+    //Find All
+    List<WishList> findAll();
+
     //Find by Id
-    WishList findById(int wishListId);
+    WishList findByUsername(String username);
 
     //Add
     WishList add(WishList wishList);
@@ -12,6 +18,7 @@ public interface WishListRepository {
     //Update
     boolean update(WishList wishList);
 
+
     //Delete
-    boolean deleteById(int wishListId);
+    boolean deleteByUsername(String username);
 }

@@ -24,16 +24,15 @@ public class WishListJdbcTemplateRepositoryTest {
     }
 
     @Test
-    void shouldFindById() {
-        WishList actual = repository.findById(1);
+    void shouldFindByUsername() {
+        WishList actual = repository.findByUsername("username"); //put in valid name
         assertNotNull(actual);
         assertEquals(1, actual.getWishListId());
-        assertEquals("", actual.getUsername()); //put in a username
     }
 
     @Test
     void shouldNotFindInvalidId() {
-        WishList actual = repository.findById(-1);
+        WishList actual = repository.findByUsername("username"); //put in invalid name
         assertNull(actual);
     }
 
@@ -54,8 +53,8 @@ public class WishListJdbcTemplateRepositoryTest {
 
     @Test
     void shouldDelete() {
-        assertTrue(repository.deleteById(1));
-        assertFalse(repository.deleteById(1));
+        assertTrue(repository.deleteByUsername("Debbie"));
+        assertFalse(repository.deleteByUsername("Debbie"));
     }
 
     WishList makeWishList() {
@@ -64,5 +63,4 @@ public class WishListJdbcTemplateRepositoryTest {
         wishList.setUsername("Debbie");
         return wishList;
     }
-
 }
