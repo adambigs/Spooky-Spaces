@@ -42,7 +42,7 @@ CREATE TABLE wishlist (
     username VARCHAR(25),
     location_id int,
     CONSTRAINT fk_wishlist_location_location_id FOREIGN KEY (location_id)
-        REFERENCES location (location_id)
+         REFERENCES location (location_id)
 );
 
 -- CREATE TABLE wishlist_location (
@@ -105,3 +105,7 @@ values ('cooldude69', 1),
 
 end //
 delimiter ;
+
+
+
+
