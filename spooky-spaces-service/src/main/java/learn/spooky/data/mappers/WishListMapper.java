@@ -1,6 +1,5 @@
 package learn.spooky.data.mappers;
 
-import learn.spooky.models.Location;
 import learn.spooky.models.WishList;
 import org.springframework.jdbc.core.RowMapper;
 

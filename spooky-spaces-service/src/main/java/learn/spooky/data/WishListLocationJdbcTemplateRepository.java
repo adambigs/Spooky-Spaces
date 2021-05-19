@@ -5,8 +5,13 @@ import learn.spooky.models.WishListLocation;
 public class WishListLocationJdbcTemplateRepository implements WishListLocationRepository{
 
     @Override
-    public boolean add(WishListLocation wishListLocation) {
-        return false;
+    public <List> WishListLocation findByWishListId(int wishlistId) {
+        return null;
+    }
+
+    @Override
+    public WishListLocation add(WishListLocation wishListLocation) {
+        return wishListLocation;
     }
 
     @Override
