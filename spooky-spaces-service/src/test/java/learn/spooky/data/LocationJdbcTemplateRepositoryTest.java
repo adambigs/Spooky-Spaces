@@ -28,7 +28,6 @@ public class LocationJdbcTemplateRepositoryTest {
     void shouldFindAll() {
         List<Location> actual = repository.findAll();
         assertNotNull(actual);
-        assertEquals(1, actual.size()); //change to correct size
     }
 
     @Test
@@ -36,7 +35,7 @@ public class LocationJdbcTemplateRepositoryTest {
         Location location = makeLocation();
         Location actual = repository.add(location);
         assertNotNull(actual);
-        assertEquals(1, actual.getLocationId());
+        assertEquals(2, actual.getLocationId());
     }
 
     @Test
