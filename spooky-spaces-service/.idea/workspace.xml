@@ -4,29 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f984c85e-375b-43be-b44c-75c5c07d3ab1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/learn/spooky/data/WishListLocationJdbcTemplateRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/spooky/data/WishListLocationJdbcTemplateRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/learn/spooky/data/WishListLocationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/spooky/data/WishListLocationRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/learn/spooky/data/mappers/WishListMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/spooky/data/mappers/WishListMapper.java" afterDir="false" />
-    </list>
+    <list default="true" id="18435975-94c6-4d83-88f0-f1a0e100006d" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Interface" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1sl8Vqv6YxQvRBY2rY5tQ3o8L9O" />
+  <component name="ProjectId" id="1slfDTJFGughBvLiW9LcgbEKl3n" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -34,20 +22,122 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="SQLPlugin.ProjectConfiguration">
-    <queries />
+  <component name="RunManager" selected="JUnit.WishListJdbcTemplateRepositoryTest">
+    <configuration name="LocationJdbcTemplateRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spooky-spaces-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="learn.spooky.data.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="learn.spooky.data" />
+      <option name="MAIN_CLASS_NAME" value="learn.spooky.data.LocationJdbcTemplateRepositoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LocationServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spooky-spaces-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="learn.spooky.domain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="learn.spooky.domain" />
+      <option name="MAIN_CLASS_NAME" value="learn.spooky.domain.LocationServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WishListJdbcTemplateRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spooky-spaces-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="learn.spooky.data.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="learn.spooky.data" />
+      <option name="MAIN_CLASS_NAME" value="learn.spooky.data.WishListJdbcTemplateRepositoryTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WishListJdbcTemplateRepositoryTest.shouldUpdate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spooky-spaces-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="learn.spooky.data.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="learn.spooky.data" />
+      <option name="MAIN_CLASS_NAME" value="learn.spooky.data.WishListJdbcTemplateRepositoryTest" />
+      <option name="METHOD_NAME" value="shouldUpdate" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="WishListServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spooky-spaces-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="learn.spooky.domain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="learn.spooky.domain" />
+      <option name="MAIN_CLASS_NAME" value="learn.spooky.domain.WishListServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.WishListJdbcTemplateRepositoryTest" />
+        <item itemvalue="JUnit.LocationServiceTest" />
+        <item itemvalue="JUnit.WishListServiceTest" />
+        <item itemvalue="JUnit.LocationJdbcTemplateRepositoryTest" />
+        <item itemvalue="JUnit.WishListJdbcTemplateRepositoryTest.shouldUpdate" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f984c85e-375b-43be-b44c-75c5c07d3ab1" name="Default Changelist" comment="" />
-      <created>1621435842152</created>
+      <changelist id="18435975-94c6-4d83-88f0-f1a0e100006d" name="Default Changelist" comment="" />
+      <created>1621451989346</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1621435842152</updated>
+      <updated>1621451989346</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/spooky_spaces_service$WishListServiceTest.ic" NAME="WishListServiceTest Coverage Results" MODIFIED="1621454003050" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>learn.spooky.domain.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/spooky_spaces_service$LocationServiceTest.ic" NAME="LocationServiceTest Coverage Results" MODIFIED="1621454043367" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>learn.spooky.domain.*</FILTER>
+    </SUITE>
   </component>
 </project>

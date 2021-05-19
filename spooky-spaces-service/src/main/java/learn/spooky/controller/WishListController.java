@@ -57,9 +57,9 @@ public class WishListController {
         return ErrorHandler.build(result);
     }
 
-    @DeleteMapping("/{wishlistId}")
-    public ResponseEntity<Object> deleteById(@PathVariable int wishListId,@RequestBody String username) {
-        Result<WishList> result = service.deleteByUsername(username, wishListId);
+    @DeleteMapping("/delete")
+    public ResponseEntity<Object> deleteById(@RequestBody String username) {
+        Result<WishList> result = service.deleteByUsername(username);
         if (result.isSuccess()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

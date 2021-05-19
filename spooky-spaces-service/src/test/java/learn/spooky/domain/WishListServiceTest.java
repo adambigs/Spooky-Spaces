@@ -40,22 +40,12 @@ public class WishListServiceTest {
     }
 
     @Test
-    void shouldNotAddDuplicateUsername(){
+    void shouldNotAddEmptyLocation() {
         WishList wishList = makeWishList();
-        wishList.setUsername("cooldude69"); //something that is in the database
-        repository.add(wishList);
+        wishList.setLocationId(-1);
 
         Result<WishList> actual = service.add(wishList);
         assertEquals(ResultType.INVALID, actual.getType());
-    }
-
-    @Test
-    void ShouldUpdate(){
-        WishList wishList = makeWishList();
-        wishList.setWishListId(1);
-
-        Result<WishList> actual = service.update(wishList);
-        assertEquals(ResultType.SUCCESS, actual.getType());
     }
 
     @Test
@@ -77,20 +67,14 @@ public class WishListServiceTest {
     }
 
     @Test
-    void shouldDelete() {
-        Result<WishList> actual = service.deleteByUsername("cooldude69",1);
-        assertEquals(ResultType.SUCCESS, actual.getType());
-    }
-
-    @Test
     void shouldNotDeleteInvalidUsername() {
-        Result<WishList> actual = service.deleteByUsername("",1);
+        Result<WishList> actual = service.deleteByUsername("");
         assertEquals(ResultType.NOT_FOUND, actual.getType());
     }
 
     @Test
     void shouldNotDeleteNonExistUsername() {
-        Result<WishList> actual = service.deleteByUsername("username",1); //something not in database
+        Result<WishList> actual = service.deleteByUsername("username"); //something not in database
         assertEquals(ResultType.NOT_FOUND, actual.getType());
     }
 
@@ -98,6 +82,7 @@ public class WishListServiceTest {
         WishList wishList = new WishList();
         wishList.setWishListId(3);
         wishList.setUsername("Debbie");
+        wishList.setLocationId(1);
         return wishList;
     }
 }
