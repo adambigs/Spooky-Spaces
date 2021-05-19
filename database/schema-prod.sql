@@ -38,16 +38,19 @@ CREATE TABLE comments (
 
 CREATE TABLE wishlist (
     wishlist_id INT PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR(25)
-);
-
-CREATE TABLE wishlist_location (
-    wishlist_id INT,
-    location_id INT,
-    CONSTRAINT pk_wishlist_location PRIMARY KEY (wishlist_id , location_id),
-    CONSTRAINT fk_wishlist_location_wishlist_id FOREIGN KEY (wishlist_id)
-        REFERENCES wishlist (wishlist_id),
+    username VARCHAR(25),
+    location_id int,
     CONSTRAINT fk_wishlist_location_location_id FOREIGN KEY (location_id)
         REFERENCES location (location_id)
 );
+
+-- CREATE TABLE wishlist_location (
+--     wishlist_id INT,
+--     location_id INT,
+--     CONSTRAINT pk_wishlist_location PRIMARY KEY (wishlist_id , location_id),
+--     CONSTRAINT fk_wishlist_location_wishlist_id FOREIGN KEY (wishlist_id)
+--         REFERENCES wishlist (wishlist_id),
+--     CONSTRAINT fk_wishlist_location_location_id FOREIGN KEY (location_id)
+--         REFERENCES location (location_id)
+-- );
 
