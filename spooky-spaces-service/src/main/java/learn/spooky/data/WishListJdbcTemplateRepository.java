@@ -79,7 +79,8 @@ public class WishListJdbcTemplateRepository implements WishListRepository {
     //Delete a username from the table
     //This may have a conflict, may have to delete from teh bridge table first
     @Override
-    public boolean deleteByUsername(String username) {
+    public boolean deleteByUsername(String username, int id) {
+        jdbcTemplate.update("delete from wishlist_location where wishlist_id = ?", id);
         return jdbcTemplate.update(
                 "delete from wishlist where username = ?", username) > 0;
     }
