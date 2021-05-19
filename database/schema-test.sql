@@ -81,8 +81,8 @@ insert into encounter_type
 values (1, 1),(2, 1);
 
 insert into comments
-(username, rating, comment_text)
-values ('cooldude69', '5', 'This place was so spooky. I was scared.');
+(username, rating, comment_text, encounter_id)
+values ('cooldude69', '5', 'This place was so spooky. I was scared.', 1);
 
 insert into wishlist
 (username)
@@ -102,6 +102,8 @@ left outer join wishlist w on w.wishlist_id = wl.wishlist_id;
 
 end //
 delimiter ;
+
+
 
 
 
