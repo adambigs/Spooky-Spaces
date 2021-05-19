@@ -74,7 +74,8 @@ values ('Pfister Hotel', '424 E Wisconsin Ave', '43.03956219', '-87.90551367');
 
 insert into encounter
 (encounter_description, location_id)
-values ('Built in the 19th century, the hotel is apparently haunted by its namesake, Charles Pfister, who likes to haunt MLB players staying in the hotel.', 1);
+values ('Built in the 19th century, the hotel is apparently haunted by its namesake, Charles Pfister, who likes to haunt MLB players staying in the hotel.', 1),
+('test test', 1);
 
 insert into encounter_type
 (type_id, encounter_id)
