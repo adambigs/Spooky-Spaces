@@ -9,6 +9,9 @@
         <module name="spooky-spaces-service" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="spooky-spaces-service" target="1.11" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

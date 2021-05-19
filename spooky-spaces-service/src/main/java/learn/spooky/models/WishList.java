@@ -12,12 +12,10 @@ public class WishList {
     @NotBlank(message = "username is required for wish list")
     private String username;
 
-    public WishList() {
-    }
+    @Min(value = 0, message = "Location id must be positive")
+    private int locationId;
 
-    public WishList(@Min(value = 0, message = "Wish list id must be positive") int wishListId, @NotBlank(message = "username is required for wish list") String username) {
-        this.wishListId = wishListId;
-        this.username = username;
+    public WishList() {
     }
 
     public int getWishListId() {
@@ -34,5 +32,13 @@ public class WishList {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public int getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(int locationId) {
+        this.locationId = locationId;
     }
 }

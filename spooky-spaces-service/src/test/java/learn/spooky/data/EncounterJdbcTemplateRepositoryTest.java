@@ -18,18 +18,18 @@ public class EncounterJdbcTemplateRepositoryTest {
     @Autowired
     EncounterJdbcTemplateRepository repository;
 
-//    @Autowired
-//    KnownGoodState knownGoodState;
-//
-//    @BeforeEach
-//    void setup() {
-//        knownGoodState.set();
-//    }
+    @Autowired
+    KnownGoodState knownGoodState;
+
+    @BeforeEach
+    void setup() {
+        knownGoodState.set();
+    }
 
     @Test
     void findAll(){
         List<Encounter> actual = repository.findAll();
-        assertEquals(19, actual.size());
+        assertEquals(1, actual.size());
     }
 
     @Test
@@ -94,7 +94,7 @@ public class EncounterJdbcTemplateRepositoryTest {
     Encounter makeEncounter(){
         Encounter encounter = new Encounter();
         encounter.setDescription("Haunted broom closet");
-        encounter.setLocationId(20);
+        encounter.setLocationId(2);
         encounter.setEncounterType(EncounterType.TOUCH);
         return encounter;
     }

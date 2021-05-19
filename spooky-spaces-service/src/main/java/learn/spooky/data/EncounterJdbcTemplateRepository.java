@@ -24,10 +24,11 @@ public class EncounterJdbcTemplateRepository implements EncounterRepository {
 
     @Override
     public List<Encounter> findAll() {
-        final String sql = "select encounter_id, " +
+        final String sql = "select " +
+                "encounter_id, " +
                 "encounter_description, " +
-                "location_id, type_id" +
-                " from encounter;";
+                "location_id " +
+                "from encounter;";
 
         return jdbcTemplate.query(sql, new EncounterMapper());
     }
@@ -37,7 +38,8 @@ public class EncounterJdbcTemplateRepository implements EncounterRepository {
     public Encounter findById(int encounterId) {
         final String sql = "select encounter_id, " +
                 "encounter_description, " +
-                "location_id, type_id" +
+                "location_id, " +
+                "type_id " +
                 " from encounter " +
                 "where encounter_id = ?;";
 
@@ -111,11 +113,4 @@ public class EncounterJdbcTemplateRepository implements EncounterRepository {
         encounter.setComment(comments);
     }
 
-//    private void addEncounterTypes(Encounter encounter){
-//
-//        final String sql = "";
-//
-//
-//
-//    }
 }

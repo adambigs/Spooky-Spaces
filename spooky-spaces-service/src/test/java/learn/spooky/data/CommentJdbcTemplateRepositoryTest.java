@@ -16,18 +16,18 @@ public class CommentJdbcTemplateRepositoryTest {
     @Autowired
     CommentJdbcTemplateRepository repository;
 
-//    @Autowired
-//    KnownGoodState knownGoodState;
-//
-//    @BeforeEach
-//    void setup() {
-//        knownGoodState.set();
-//    }
+    @Autowired
+    KnownGoodState knownGoodState;
+
+    @BeforeEach
+    void setup() {
+        knownGoodState.set();
+    }
 
     @Test
     void shouldFindAll(){
         List<Comment> actual = repository.findAll();
-        assertEquals(19, actual.size()); //replace with amount from test database
+        assertEquals(1, actual.size()); //replace with amount from test database
     }
 
     @Test

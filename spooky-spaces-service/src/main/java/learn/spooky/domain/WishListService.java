@@ -48,9 +48,11 @@ public class WishListService {
         if (violations.isEmpty()){ //check for duplicates
             List<WishList> wishLists = findAll();
             for (WishList l : wishLists){
-                if (Objects.equals(l.getUsername(), wishList.getUsername())){ //check username
-                    result.addMessage("Duplicate WishList not allowed", ResultType.INVALID);
-                    return result;
+                if (Objects.equals(l.getUsername(), wishList.getUsername())){ //check for matching username
+                    if (Objects.equals(l.getLocationId(), wishList.getLocationId())){ //check for matching locations for a user
+                        result.addMessage("Duplicate Location not allowed", ResultType.INVALID);
+                        return result;
+                    }
                 }
             }
         }
@@ -86,16 +88,16 @@ public class WishListService {
     }
 
     //Delete
-    public Result<WishList> deleteByUsername(String username, int id) {
+    public Result<WishList> deleteByUsername(String username) {
         Result<WishList> result = new Result<>();
 
-        if (!repository.deleteByUsername(username, id)) { //make sure the wishList id exists
+        if (!repository.deleteByUsername(username)) { //make sure the wishList id exists
             String msg = String.format("Wish List username %s is not found", username);
             result.addMessage(msg, ResultType.NOT_FOUND);
         }
 
         if (result.isSuccess()){ //update if successful
-            repository.deleteByUsername(username, id);
+            repository.deleteByUsername(username);
         }
         return result;
     }
