@@ -46,11 +46,11 @@ public class LocationJdbcTemplateRepositoryTest {
         assertTrue(repository.update(location));
     }
 
-    @Test
-    void shouldDelete() {
-        assertTrue(repository.deleteById(1));
-        assertFalse(repository.deleteById(1));
-    }
+//    @Test
+//    void shouldDelete() {
+//        assertTrue(repository.deleteById(1));
+//        assertFalse(repository.deleteById(1));
+//    }
 
     Location makeLocation() {
         Location location = new Location();

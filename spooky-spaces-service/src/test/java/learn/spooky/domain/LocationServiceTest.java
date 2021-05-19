@@ -89,23 +89,23 @@ public class LocationServiceTest {
         assertEquals(ResultType.NOT_FOUND, actual.getType());
     }
 
-    @Test
-    void shouldDelete() {
-        Result<Location> actual = service.deleteById(1);
-        assertEquals(ResultType.SUCCESS, actual.getType());
-    }
-
-    @Test
-    void shouldNotDeleteInvalid() {
-        Result<Location> actual = service.deleteById(-1);
-        assertEquals(ResultType.INVALID, actual.getType());
-    }
-
-    @Test
-    void shouldNotDeleteNonExistId() {
-        Result<Location> actual = service.deleteById(100);
-        assertEquals(ResultType.NOT_FOUND, actual.getType());
-    }
+//    @Test
+//    void shouldDelete() {
+//        Result<Location> actual = service.deleteById(1);
+//        assertEquals(ResultType.SUCCESS, actual.getType());
+//    }
+//
+//    @Test
+//    void shouldNotDeleteInvalid() {
+//        Result<Location> actual = service.deleteById(-1);
+//        assertEquals(ResultType.INVALID, actual.getType());
+//    }
+//
+//    @Test
+//    void shouldNotDeleteNonExistId() {
+//        Result<Location> actual = service.deleteById(100);
+//        assertEquals(ResultType.NOT_FOUND, actual.getType());
+//    }
 
     Location makeLocation() {
         Location location = new Location();

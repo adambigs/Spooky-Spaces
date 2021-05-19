@@ -58,13 +58,13 @@ public class LocationController {
         return ErrorHandler.build(result);
     }
 
-    @DeleteMapping("/{locationId}")
-    public ResponseEntity<Object> deleteById(@PathVariable int locationId) {
-        Result<Location> result = service.deleteById(locationId);
-        if (result.isSuccess()) {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
-
-        return ErrorHandler.build(result);
-    }
+//    @DeleteMapping("/{locationId}")
+//    public ResponseEntity<Object> deleteById(@PathVariable int locationId) {
+//        Result<Location> result = service.deleteById(locationId);
+//        if (result.isSuccess()) {
+//            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//        }
+//
+//        return ErrorHandler.build(result);
+//    }
 }

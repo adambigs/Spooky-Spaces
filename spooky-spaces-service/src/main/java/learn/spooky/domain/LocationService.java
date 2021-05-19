@@ -90,17 +90,17 @@ public class LocationService {
     }
 
     //Delete
-    public Result<Location> deleteById(int locationId) {
-        Result<Location> result = new Result<>();
-
-        if (!repository.deleteById(locationId)) { //make sure the location id exists
-            String msg = String.format("Location id %s is not found", locationId);
-            result.addMessage(msg, ResultType.NOT_FOUND);
-        }
-
-        if (result.isSuccess()){ //update if successful
-            repository.deleteById(locationId);
-        }
-        return result;
-    }
+//    public Result<Location> deleteById(int locationId) {
+//        Result<Location> result = new Result<>();
+//
+//        if (!repository.deleteById(locationId)) { //make sure the location id exists
+//            String msg = String.format("Location id %s is not found", locationId);
+//            result.addMessage(msg, ResultType.NOT_FOUND);
+//        }
+//
+//        if (result.isSuccess()){ //update if successful
+//            repository.deleteById(locationId);
+//        }
+//        return result;
+//    }
 }
