@@ -1,6 +1,7 @@
 package learn.spooky.models;
 
 public enum EncounterType {
+    NONE(-1),
     VISUAL(1),
     AUDITORY(2),
     TOUCH(3),
@@ -12,13 +13,13 @@ public enum EncounterType {
         this.typeId = typeId;
     }
 
-    public EncounterType valueOfType(int typeId) {
+    public static EncounterType valueOfType(int typeId) {
         for(EncounterType a : EncounterType.values()){
             if(a.getTypeId() == typeId){
                 return a;
             }
         }
-        return null;
+        return EncounterType.NONE;
     }
 
     public int getTypeId() {
