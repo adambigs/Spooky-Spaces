@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
@@ -40,7 +42,8 @@ public class WishListServiceTest {
     @Test
     void shouldNotAddDuplicateUsername(){
         WishList wishList = makeWishList();
-        wishList.setUsername("Debbie"); //something that is in the database
+        wishList.setUsername("cooldude69"); //something that is in the database
+        repository.add(wishList);
 
         Result<WishList> actual = service.add(wishList);
         assertEquals(ResultType.INVALID, actual.getType());
@@ -75,25 +78,25 @@ public class WishListServiceTest {
 
     @Test
     void shouldDelete() {
-        Result<WishList> actual = service.deleteByUsername("username");
+        Result<WishList> actual = service.deleteByUsername("cooldude69",1);
         assertEquals(ResultType.SUCCESS, actual.getType());
     }
 
     @Test
     void shouldNotDeleteInvalidUsername() {
-        Result<WishList> actual = service.deleteByUsername("");
-        assertEquals(ResultType.SUCCESS, actual.getType());
+        Result<WishList> actual = service.deleteByUsername("",1);
+        assertEquals(ResultType.NOT_FOUND, actual.getType());
     }
 
     @Test
     void shouldNotDeleteNonExistUsername() {
-        Result<WishList> actual = service.deleteByUsername("username"); //something not in database
+        Result<WishList> actual = service.deleteByUsername("username",1); //something not in database
         assertEquals(ResultType.NOT_FOUND, actual.getType());
     }
 
     WishList makeWishList() {
         WishList wishList = new WishList();
-        wishList.setWishListId(1);
+        wishList.setWishListId(3);
         wishList.setUsername("Debbie");
         return wishList;
     }

@@ -28,14 +28,16 @@ public class WishListJdbcTemplateRepositoryTest {
     @Test
     void shouldFindAll() {
         List<WishList> all = repository.findAll();
-        assertEquals(2, all.size());
+        assertNotNull(all);
     }
 
     @Test
     void shouldFindByUsername() {
-        WishList actual = repository.findByUsername("swagmaster9000"); //put in valid name
+        WishList wishList = makeWishList();
+        repository.add(wishList);
+        WishList actual = repository.findByUsername("Debbie");
         assertNotNull(actual);
-        assertEquals(2, actual.getWishListId());
+        assertEquals("Debbie", actual.getUsername());
     }
 
     @Test
@@ -49,25 +51,28 @@ public class WishListJdbcTemplateRepositoryTest {
         WishList wishList = makeWishList();
         WishList actual = repository.add(wishList);
         assertNotNull(actual);
-        assertEquals(3, actual.getWishListId()); //change to whatever id should be
+        assertEquals(2, actual.getWishListId());
     }
 
     @Test
     void shouldUpdate() {
         WishList wishList = makeWishList();
-        wishList.setWishListId(1);
+        wishList.setWishListId(2);
+        repository.add(wishList);
+        wishList.setUsername("hello");
+        assertEquals("hello", wishList.getUsername());
         assertTrue(repository.update(wishList));
     }
 
     @Test
     void shouldDelete() {
-        assertTrue(repository.deleteByUsername("swagmaster9000"));
-        assertFalse(repository.deleteByUsername("swagmaster9000"));
+        assertTrue(repository.deleteByUsername("cooldude69", 1));
+        assertFalse(repository.deleteByUsername("cooldude69", 1));
     }
 
     WishList makeWishList() {
         WishList wishList = new WishList();
-        wishList.setWishListId(3);
+        wishList.setWishListId(2);
         wishList.setUsername("Debbie");
         return wishList;
     }

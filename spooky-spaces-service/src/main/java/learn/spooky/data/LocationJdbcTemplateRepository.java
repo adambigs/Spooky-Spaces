@@ -88,6 +88,7 @@ public class LocationJdbcTemplateRepository implements  LocationRepository {
                 location.getLatitude(),
                 location.getLongitude(),
                 location.getLocationName(),
+                location.getLocationImage(),
                 location.getLocationId()) > 0;
     }
 

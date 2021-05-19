@@ -86,16 +86,16 @@ public class WishListService {
     }
 
     //Delete
-    public Result<WishList> deleteByUsername(String username) {
+    public Result<WishList> deleteByUsername(String username, int id) {
         Result<WishList> result = new Result<>();
 
-        if (!repository.deleteByUsername(username)) { //make sure the wishList id exists
+        if (!repository.deleteByUsername(username, id)) { //make sure the wishList id exists
             String msg = String.format("Wish List username %s is not found", username);
             result.addMessage(msg, ResultType.NOT_FOUND);
         }
 
         if (result.isSuccess()){ //update if successful
-            repository.deleteByUsername(username);
+            repository.deleteByUsername(username, id);
         }
         return result;
     }
