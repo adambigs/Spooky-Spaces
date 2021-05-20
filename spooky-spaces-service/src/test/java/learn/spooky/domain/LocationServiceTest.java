@@ -63,15 +63,6 @@ public class LocationServiceTest {
     }
 
     @Test
-    void ShouldUpdate(){
-        Location location = makeLocation();
-        location.setLocationId(1);
-
-        Result<Location> actual = service.update(location);
-        assertEquals(ResultType.SUCCESS, actual.getType());
-    }
-
-    @Test
     void shouldNotUpdateInvalidId(){
         Location location = makeLocation();
         location.setLocationId(-1);
