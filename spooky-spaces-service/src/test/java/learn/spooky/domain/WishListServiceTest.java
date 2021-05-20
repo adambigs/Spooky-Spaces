@@ -68,13 +68,13 @@ public class WishListServiceTest {
 
     @Test
     void shouldNotDeleteInvalidUsername() {
-        Result<WishList> actual = service.deleteByUsername("");
+        Result<WishList> actual = service.deleteByUsername("", 1);
         assertEquals(ResultType.NOT_FOUND, actual.getType());
     }
 
     @Test
     void shouldNotDeleteNonExistUsername() {
-        Result<WishList> actual = service.deleteByUsername("username"); //something not in database
+        Result<WishList> actual = service.deleteByUsername("username", 1); //something not in database
         assertEquals(ResultType.NOT_FOUND, actual.getType());
     }
 

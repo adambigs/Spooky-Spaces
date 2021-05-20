@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18435975-94c6-4d83-88f0-f1a0e100006d" name="Default Changelist" comment="" />
+    <list default="true" id="18435975-94c6-4d83-88f0-f1a0e100006d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/learn/spooky/controller/WishListController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/spooky/controller/WishListController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/learn/spooky/data/WishListJdbcTemplateRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/spooky/data/WishListJdbcTemplateRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/learn/spooky/data/WishListRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/spooky/data/WishListRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/learn/spooky/domain/WishListService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/spooky/domain/WishListService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/learn/spooky/data/WishListJdbcTemplateRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/learn/spooky/data/WishListJdbcTemplateRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/learn/spooky/domain/WishListServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/learn/spooky/domain/WishListServiceTest.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,7 +31,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
-  <component name="RunManager" selected="JUnit.WishListJdbcTemplateRepositoryTest">
+  <component name="RunManager" selected="JUnit.WishListJdbcTemplateRepositoryTest.shouldAdd">
     <configuration name="LocationJdbcTemplateRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="spooky-spaces-service" />
       <extension name="coverage">
@@ -69,7 +77,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WishListJdbcTemplateRepositoryTest.shouldUpdate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="WishListJdbcTemplateRepositoryTest.shouldAdd" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="spooky-spaces-service" />
       <extension name="coverage">
         <pattern>
@@ -79,7 +87,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="learn.spooky.data" />
       <option name="MAIN_CLASS_NAME" value="learn.spooky.data.WishListJdbcTemplateRepositoryTest" />
-      <option name="METHOD_NAME" value="shouldUpdate" />
+      <option name="METHOD_NAME" value="shouldAdd" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -102,11 +110,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.WishListJdbcTemplateRepositoryTest.shouldAdd" />
         <item itemvalue="JUnit.WishListJdbcTemplateRepositoryTest" />
-        <item itemvalue="JUnit.LocationServiceTest" />
         <item itemvalue="JUnit.WishListServiceTest" />
+        <item itemvalue="JUnit.LocationServiceTest" />
         <item itemvalue="JUnit.LocationJdbcTemplateRepositoryTest" />
-        <item itemvalue="JUnit.WishListJdbcTemplateRepositoryTest.shouldUpdate" />
       </list>
     </recent_temporary>
   </component>
@@ -131,6 +139,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/spooky_spaces_service$WishListServiceTest.ic" NAME="WishListServiceTest Coverage Results" MODIFIED="1621454003050" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
