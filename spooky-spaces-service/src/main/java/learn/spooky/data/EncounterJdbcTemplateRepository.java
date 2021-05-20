@@ -2,7 +2,9 @@ package learn.spooky.data;
 
 import learn.spooky.data.mappers.CommentMapper;
 import learn.spooky.data.mappers.EncounterMapper;
+import learn.spooky.data.mappers.EncounterTypeMapper;
 import learn.spooky.models.Encounter;
+import learn.spooky.models.EncounterType;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -107,6 +109,14 @@ public class EncounterJdbcTemplateRepository implements EncounterRepository {
 
         var comments = jdbcTemplate.query(sql, new CommentMapper(), encounter.getEncounterId());
         encounter.setComment(comments);
+    }
+
+    private void addEncounterTypes(Encounter encounter){
+
+        final String sql = "select type_id from encounter_type where encounter_id = ?;";
+
+        var encounterTypes = jdbcTemplate.query(sql, new EncounterTypeMapper(), encounter.getEncounterId());
+        encounter.setEncounterType(encounterTypes);
     }
 
 }
