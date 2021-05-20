@@ -1,6 +1,7 @@
 package learn.spooky.domain;
 
 import learn.spooky.data.EncounterRepository;
+import learn.spooky.data.LocationRepository;
 import learn.spooky.models.Encounter;
 import learn.spooky.models.Location;
 import org.springframework.stereotype.Service;
@@ -16,8 +17,13 @@ import java.util.Set;
 public class EncounterService {
 
     private final EncounterRepository repository;
+    private final LocationRepository locationRepository;
 
-    public EncounterService(EncounterRepository repository){this.repository = repository;}
+
+    public EncounterService(EncounterRepository repository, LocationRepository locationRepository){
+        this.repository = repository;
+        this.locationRepository = locationRepository;
+    }
 
     public List<Encounter> findAll(){
         return repository.findAll();
@@ -33,6 +39,8 @@ public class EncounterService {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
         Validator validator = factory.getValidator();
         Set<ConstraintViolation<Encounter>> violations = validator.validate(encounter);
+
+
 
         if(!violations.isEmpty()){
             for(ConstraintViolation<Encounter> violation : violations){
@@ -67,8 +75,19 @@ public class EncounterService {
         return result;
     }
 
-    public boolean deleteById(int encounterId){
-        return repository.deleteById(encounterId);
+    public Result<Encounter> deleteById(int encounterId){
+        Result<Encounter> result = new Result<>();
+
+        if(!repository.deleteById(encounterId)) {
+            String msg = String.format("Encounter ID: %s is not found", encounterId);
+            result.addMessage(msg, ResultType.NOT_FOUND);
+        }
+
+        if(result.isSuccess()){
+            repository.deleteById(encounterId);
+        }
+
+        return result;
     }
 
 }

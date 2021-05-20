@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Encounter {
 
-    @Min(value = 0, message = "Encounter id must be a positive number greater than zero")
+    @Min(value = 1, message = "Encounter id must be a positive number greater than zero")
     private int encounterId;
 
     @NotNull(message = "Description can not be null")
@@ -19,6 +19,8 @@ public class Encounter {
 
     private List<Comment> comment;
 
+    private List<EncounterType> encounterType;
+
     public Encounter(){};
 
     public Encounter(@Min(value = 0, message = "Encounter id must be a positive number greater than zero") int encounterId,
@@ -26,6 +28,14 @@ public class Encounter {
         this.encounterId = encounterId;
         this.description = description;
         this.locationId = locationId;
+    }
+
+    public List<EncounterType> getEncounterType() {
+        return new ArrayList<>(encounterType);
+    }
+
+    public void setEncounterType(List<EncounterType> encounterType) {
+        this.encounterType = encounterType;
     }
 
     public int getLocationId() {
@@ -52,12 +62,11 @@ public class Encounter {
         this.description = description;
     }
 
-
     public List<Comment> getComment() {
         return new ArrayList<>(comment);
     }
 
     public void setComment(List<Comment> comment) {
-        this.comment = new ArrayList<>(comment);
+        this.comment = comment;
     }
 }

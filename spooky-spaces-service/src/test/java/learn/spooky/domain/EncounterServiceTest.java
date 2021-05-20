@@ -89,13 +89,13 @@ public class EncounterServiceTest {
     @Test
     void shouldDelete(){
         when(repository.deleteById(2)).thenReturn(true);
-        assertTrue(service.deleteById(2));
+        assertEquals(ResultType.SUCCESS ,service.deleteById(2).getType());
     }
 
     @Test
     void shouldNotDeleteByInvalidId(){
         when(repository.deleteById(-1)).thenReturn(false);
-        assertFalse(service.deleteById(-1));
+        assertEquals(ResultType.NOT_FOUND, service.deleteById(-1).getType());
     }
 
     Encounter makeEncounter(){

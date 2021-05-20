@@ -1,7 +1,6 @@
 package learn.spooky.data.mappers;
 
 import learn.spooky.models.Encounter;
-import learn.spooky.models.EncounterType;
 import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
