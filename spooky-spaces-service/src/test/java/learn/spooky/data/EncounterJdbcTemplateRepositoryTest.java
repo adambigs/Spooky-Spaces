@@ -29,7 +29,7 @@ public class EncounterJdbcTemplateRepositoryTest {
     @Test
     void findAll(){
         List<Encounter> actual = repository.findAll();
-        assertEquals(1, actual.size());
+        assertEquals(2, actual.size());
     }
 
     @Test
@@ -57,14 +57,7 @@ public class EncounterJdbcTemplateRepositoryTest {
     void shouldNotAddInvalidDescription(){
         Encounter encounter = makeInvalidEncounterDescription();
         repository.add(encounter);
-        assertNull(encounter);
-    }
-
-    @Test
-    void shouldNotAddInvalidId(){
-        Encounter encounter = makeInvalidEncounterId();
-        repository.add(encounter);
-        assertNull(encounter);
+        assertEquals("", encounter.getDescription());
     }
 
     @Test
@@ -78,7 +71,7 @@ public class EncounterJdbcTemplateRepositoryTest {
     void shouldNotUpdate(){
         Encounter encounter = makeEncounter();
         encounter.setEncounterId(0);
-        assertTrue(repository.update(encounter));
+        assertFalse(repository.update(encounter));
     }
 
     @Test
@@ -94,26 +87,15 @@ public class EncounterJdbcTemplateRepositoryTest {
     Encounter makeEncounter(){
         Encounter encounter = new Encounter();
         encounter.setDescription("Haunted broom closet");
-        encounter.setLocationId(2);
-        encounter.setEncounterType(EncounterType.TOUCH);
+        encounter.setLocationId(1);
         return encounter;
     }
 
     Encounter makeInvalidEncounterDescription(){
         Encounter encounter = new Encounter();
         encounter.setDescription("");
-        encounter.setLocationId(20);
-        encounter.setEncounterType(EncounterType.TOUCH);
+        encounter.setLocationId(1);
         return encounter;
     }
-
-    Encounter makeInvalidEncounterId(){
-        Encounter encounter = new Encounter();
-        encounter.setDescription("blah");
-        encounter.setLocationId(0);
-        encounter.setEncounterType(EncounterType.TOUCH);
-        return encounter;
-    }
-
 
 }

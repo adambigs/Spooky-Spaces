@@ -14,7 +14,6 @@ public class EncounterMapper implements RowMapper<Encounter> {
         encounter.setEncounterId(resultSet.getInt("encounter_id"));
         encounter.setDescription(resultSet.getString("encounter_description"));
         encounter.setLocationId(resultSet.getInt("location_id"));
-        encounter.setEncounterType(EncounterType.valueOfType(resultSet.getInt("type.id")));
         return encounter;
     }
 
