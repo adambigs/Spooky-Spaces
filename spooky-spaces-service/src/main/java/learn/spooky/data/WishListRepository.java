@@ -19,5 +19,5 @@ public interface WishListRepository {
     boolean update(WishList wishList);
 
     //Delete
-    boolean deleteByUsername(String username);
+    boolean deleteByUsername(String username, int locationId);
 }
