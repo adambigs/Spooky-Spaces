@@ -28,7 +28,8 @@ public class CommentJdbcTemplateRepository implements CommentRepository {
         final String sql = "select comment_id, " +
                 "username, " +
                 "rating, " +
-                "comment_text " +
+                "comment_text, " +
+                "encounter_id " +
                 "from comments;";
 
         return jdbcTemplate.query(sql, new CommentMapper());
@@ -36,15 +37,11 @@ public class CommentJdbcTemplateRepository implements CommentRepository {
 
     @Override
     public List<Comment> findByEncounter(int encounterId) {
-        final String sql = "select comment_id, " +
-                "username, " +
-                "rating, " +
-                "comment_text " +
-                "encounter_id" +
-                "from comments " +
-                "where e.encounter_id = ?;";
+        final String sql = "select comment_id, username, rating, comment_text, encounter_id " +
+        "from comments " +
+        "where encounter_id = ?;";
 
-        return jdbcTemplate.query(sql, new CommentMapper());
+        return jdbcTemplate.query(sql, new CommentMapper(), encounterId);
     }
 
     @Override
@@ -53,7 +50,7 @@ public class CommentJdbcTemplateRepository implements CommentRepository {
         final String sql = "select comment_id, " +
                 "username, " +
                 "rating, " +
-                "comment_text " +
+                "comment_text, " +
                 "encounter_id " +
                 "from comments " +
                 "where comment_id = ?;";
@@ -92,7 +89,7 @@ public class CommentJdbcTemplateRepository implements CommentRepository {
     @Override
     public boolean update(Comment comment) {
 
-        final String sql = "update comment set " +
+        final String sql = "update comments set " +
                 "username = ?, " +
                 "rating = ?, " +
                 "comment_text = ?, " +
@@ -103,13 +100,14 @@ public class CommentJdbcTemplateRepository implements CommentRepository {
                 comment.getUsername(),
                 comment.getRating(),
                 comment.getDescription(),
-                comment.getEncounterId()) > 0;
+                comment.getEncounterId(),
+                comment.getCommentId()) > 0;
     }
 
     @Override
     @Transactional
     public boolean deleteById(int commentId) {
-        return jdbcTemplate.update("delete from comments where comment_id = ?;") > 0;
+        return jdbcTemplate.update("delete from comments where comment_id = ?;", commentId) > 0;
     }
 
 }

@@ -39,25 +39,28 @@ CREATE TABLE comments (
 
 CREATE TABLE wishlist (
     wishlist_id INT PRIMARY KEY AUTO_INCREMENT,
-    username VARCHAR(25)
-);
-
-CREATE TABLE wishlist_location (
-    wishlist_id INT,
-    location_id INT,
-    CONSTRAINT pk_wishlist_location PRIMARY KEY (wishlist_id , location_id),
-    CONSTRAINT fk_wishlist_location_wishlist_id FOREIGN KEY (wishlist_id)
-        REFERENCES wishlist (wishlist_id),
+    username VARCHAR(25),
+    location_id int,
     CONSTRAINT fk_wishlist_location_location_id FOREIGN KEY (location_id)
         REFERENCES location (location_id)
 );
+
+-- CREATE TABLE wishlist_location (
+--     wishlist_id INT,
+--     location_id INT,
+--     CONSTRAINT pk_wishlist_location PRIMARY KEY (wishlist_id , location_id),
+--     CONSTRAINT fk_wishlist_location_wishlist_id FOREIGN KEY (wishlist_id)
+--         REFERENCES wishlist (wishlist_id),
+--     CONSTRAINT fk_wishlist_location_location_id FOREIGN KEY (location_id)
+--         REFERENCES location (location_id)
+-- );
 
 delimiter //
 create procedure set_known_good_state()
 begin
 
-delete from wishlist_location;
-alter table wishlist_location auto_increment = 1;
+-- delete from wishlist_location;
+-- alter table wishlist_location auto_increment = 1;
 delete from wishlist;
 alter table wishlist auto_increment = 1;
 delete from comments;
@@ -86,23 +89,20 @@ insert into comments
 values ('cooldude69', '5', 'This place was so spooky. I was scared.');
 
 insert into wishlist
-(username)
-values ('cooldude69'),
-("swagmaster9000");
+(username, location_id)
+values ('cooldude69', 1),
+("swagmaster9000", 1);
 
-insert into wishlist_location
-(wishlist_id, location_id)
-values(1,1);
+-- insert into wishlist_location
+-- (wishlist_id, location_id)
+-- values(1,1);
 
 
-select w.username, l.location_name
-from wishlist_location wl
-left outer join location l on l.location_id = wl.location_id
-left outer join wishlist w on w.wishlist_id = wl.wishlist_id;
+-- select w.username, l.location_name
+-- from wishlist_location wl
+-- left outer join location l on l.location_id = wl.location_id
+-- left outer join wishlist w on w.wishlist_id = wl.wishlist_id;
 
 
 end //
 delimiter ;
-
-
-
