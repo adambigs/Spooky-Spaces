@@ -10,10 +10,11 @@ public class Encounter {
     @Min(value = 0, message = "Encounter id must be a positive number greater than zero")
     private int encounterId;
 
+    @NotNull(message = "Description can not be null")
     @NotBlank(message = "Description is required")
     private String description;
 
-    @Min(value = 0, message = "Encounter id must be a positive number greater than zero")
+    @Min(value = 1, message = "Encounter id must be a positive number greater than zero")
     private int locationId;
 
     private List<Comment> comment;
