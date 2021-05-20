@@ -75,7 +75,7 @@ public class CommentService {
         Result<Comment> result = new Result<>();
 
         if (!repository.deleteById(commentId)) { //make sure the comment id exists
-            String msg = String.format("Location id %s is not found", commentId);
+            String msg = String.format("Comment id %s is not found", commentId);
             result.addMessage(msg, ResultType.NOT_FOUND);
         }
 

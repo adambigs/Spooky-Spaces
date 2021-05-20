@@ -61,8 +61,8 @@ public class WishListJdbcTemplateRepositoryTest {
 
     @Test
     void shouldDelete() {
-        assertTrue(repository.deleteByUsername("swagmaster9000"));
-        assertFalse(repository.deleteByUsername("swagmaster9000"));
+        assertTrue(repository.deleteByUsername("swagmaster9000", 2));
+        assertFalse(repository.deleteByUsername("swagmaster9000", 2));
     }
 
     WishList makeWishList() {

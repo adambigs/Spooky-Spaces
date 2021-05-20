@@ -69,7 +69,6 @@ public class CommentServiceTest {
     void shouldUpdate() {
         Comment comment = makeComment();
         comment.setCommentId(1);
-        comment.setRating(2);
 
         Result<Comment> actual = service.update(comment);
         assertEquals(ResultType.SUCCESS, actual.getType());
@@ -114,7 +113,7 @@ public class CommentServiceTest {
     //should delete
     @Test
     void shouldDelete() {
-        Result<Comment> actual = service.deleteById(1);
+        Result<Comment> actual = service.deleteById(2);
         assertEquals(ResultType.SUCCESS, actual.getType());
     }
 
@@ -124,6 +123,7 @@ public class CommentServiceTest {
         comment.setRating(4);
         comment.setDescription("Its pretty cool I guess...");
         comment.setEncounterId(1);
+        comment.setCommentId(2);
         return comment;
     }
 }
