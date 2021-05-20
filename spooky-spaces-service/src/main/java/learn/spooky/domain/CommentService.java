@@ -25,7 +25,7 @@ public class CommentService {
         return repository.findAll();
     }
 
-    List<Comment> findByEncounter(int encounterId) {
+    public List<Comment> findByEncounter(int encounterId) {
         return repository.findByEncounter(encounterId);
     }
 
