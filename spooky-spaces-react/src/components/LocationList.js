@@ -21,7 +21,7 @@ function LocationList(){
         <div className="card">
           <h2 className="card-title ml-3">Location List</h2>
           <ul className="list-group list-group-flush">
-            {locations.map(l => <Location key={l.locationId} locationId={l.locationId} locationName={l.locationName} latitude={l.latitude} longitude={l.longitude} />)}
+            {locations.map(l => <Location key={l.locationId} locationId={l.locationId} locationName={l.locationName} address={l.address} latitude={l.latitude} longitude={l.longitude} />)}
           </ul>
         </div>   
     );
