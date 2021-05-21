@@ -5,12 +5,14 @@ import {
   Route,
   Redirect} from 'react-router-dom';
 import { useState } from 'react';  
-import jwt_decode from 'jwt-decode';
+import Home from './components/Home'; 
+import About from './components/static/About';
 
 function App() {
   return (
     <div className="App">
-      <Router>
+    <div className="container">  
+    <Router>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -28,7 +30,8 @@ function App() {
               <About />
             </Route>
           </Switch> 
-        </Router>   
+        </Router> 
+</div>
     </div>
   );
 }
