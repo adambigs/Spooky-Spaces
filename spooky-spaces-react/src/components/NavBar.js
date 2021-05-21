@@ -15,13 +15,13 @@ function NavBar() {
         <Link className="nav-link" to="/about">About</Link> 
         </li>
         <li className="nav-item">
-         <Link className="nav-link" to="/allspaces">All Spaces</Link> 
+         <Link className="nav-link" to="/encounters">Encounters</Link> 
         </li>
       </ul>
     </div>
     </div>
     <Link to="/login"><Button text="Login" /></Link>
-    <Link to="/register"><Button text="Login" /></Link>
+    <Link to="/register"><Button text="Register" /></Link>
 </nav>
   )
 };

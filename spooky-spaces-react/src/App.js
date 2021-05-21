@@ -18,7 +18,7 @@ function App() {
             <Route path="/about">
               <About />
             </Route>
-            <Route path="/allspaces">
+            <Route path="/encounters">
             
             </Route>
             <Route path="*">
