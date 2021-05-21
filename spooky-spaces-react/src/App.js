@@ -4,8 +4,8 @@ import {
   Route,
 } from "react-router-dom";
 import Home from "./components/Home";
-import About from "./components/static/About";
-import NotFound from "./components/static/NotFound";
+import About from "./components/About";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
