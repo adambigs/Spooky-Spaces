@@ -3,7 +3,7 @@ import Button from './Button';
 
 function NavBar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
      <div className="container-fluid">
      <span className="navbar-brand mb-0 h1">Spooky Spaces</span>
     <div className="collapse navbar-collapse" id="navbarSupportedContent">

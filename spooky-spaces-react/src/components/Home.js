@@ -5,8 +5,8 @@ function Home(){
 
     return (
         <>
-        <NewMap />
         <NavBar />
+        <NewMap />
         </>
     );
 
