@@ -1,11 +1,9 @@
-import React from 'react'
-
 function Comment({ commentId, username, rating, description, encounterId }) {
     return (
-        <div>
+        <div className="container">
             
         </div>
     )
 }
 
-export default Comment
+export default Comment;

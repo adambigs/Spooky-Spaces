@@ -1,3 +1,4 @@
+import CommentList from './CommentList';
 import NavBar from './NavBar';
 
 function About() {
@@ -14,6 +15,7 @@ function About() {
           We have devised an app to solve that problem, and simultaneously generate a new scope of tourism revenue to our town, a ghost map.
       </h2>
       </div>
+      <CommentList />
       </>
     )
   }

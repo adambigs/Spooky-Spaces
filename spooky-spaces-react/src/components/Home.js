@@ -4,9 +4,9 @@ import NavBar from './NavBar';
 function Home(){
 
     return (
-        <>
-        <NewMap />
+        <>        
         <NavBar />
+        <NewMap />
         </>
     );
 
