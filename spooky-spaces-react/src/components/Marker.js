@@ -1,13 +1,10 @@
 import React from 'react';
 import './marker.css';
 
-const Marker = (props) => {
-    const { color, name, id } = props;
+const Marker = ({ key, position, onClick, icon }) => {
     return (
-      <div className="marker"
-        style={{ backgroundColor: color, cursor: 'pointer'}}
-        title={name}
-      />
+      <div className="marker">
+      </div>
     );
   };
 
