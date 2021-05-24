@@ -1,8 +1,14 @@
+
+
 function Location({locationId, locationName, address,  latitude, longitude}){
-    return ( //display all location atrobutes 
-        <li className="list-group-item">
+    
+
+  
+    return ( //display all location attributes 
+        <div className="list-group-item">
+        <p>this is a location</p>
           Location {locationId}: {locationName} {address} {latitude} {longitude}
-        </li>
+        </div>
       );
 }
 

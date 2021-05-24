@@ -2,7 +2,7 @@ import React from 'react'
 
 function Button({ text, onClick }) {
     return (
-    <button type="button" className="btn btn-outline-light" onClick={onClick}>{text}</button>
+    <button type="button" className="btn btn-outline-light mx-1" onClick={onClick}>{text}</button>
 
     )
 }

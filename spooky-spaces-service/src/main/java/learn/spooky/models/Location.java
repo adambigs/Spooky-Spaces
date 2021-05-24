@@ -1,6 +1,8 @@
 package learn.spooky.models;
 
 import javax.validation.constraints.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Location {
 
@@ -22,7 +24,17 @@ public class Location {
 
     public String locationImage;
 
+    public List<Encounter> encounters = new ArrayList<>();;
+
     public Location() {
+    }
+
+    public List<Encounter> getEncounters() {
+        return encounters;
+    }
+
+    public void setEncounters(List<Encounter> encounters) {
+        this.encounters = encounters;
     }
 
     public String getAddress() {

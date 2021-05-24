@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useCallback, useEffect} from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { GoogleMap,
 useLoadScript,
 Marker,
@@ -10,10 +10,7 @@ import usePlacesAutocomplete, {
   getLatLng,
 } from "use-places-autocomplete";
 
-import { formatRelative } from "date-fns";
-import {Link, useHistory } from "react-router-dom";
-import LocationList from "./LocationList";
-import Location from './Location';
+import {useParams, useHistory } from "react-router-dom";
 import {
   Combobox,
   ComboboxInput,
@@ -53,11 +50,22 @@ export default function NewMap(){
     const [selected2, setSelected2] = React.useState(null);
     const [locations, setLocations] = useState([]); //List of all locations
     const [messages, setMessages] = useState(""); //Any error messages
+    const { id } = useParams();
 
     const [lat1, setLat1] = useState("");
     const [lng1, setLng1] = useState("");
     const [address, setAddress] = useState("");
     const [name, setName] = useState("");
+    
+    const defaultLocation = {
+      locationId: 0,
+      longitude: "",
+      latitude: "",
+      locationName: "",
+      address: ""
+    } 
+
+    const [location, setLocation] = useState(defaultLocation);
 
     useEffect(() => { //get the list of all location
         fetch("http://localhost:8080/api/location")
@@ -72,7 +80,7 @@ export default function NewMap(){
         .catch(console.log);
     }, []);
 
-    const onMapClick = React.useCallback((e) => { //when the map is clicked a new shost maker is added
+    const onMapClick = React.useCallback((e) => { //when the map is clicked a new ghost maker is added
     setMarkers((current) => [
       ...current,
       {
@@ -81,24 +89,22 @@ export default function NewMap(){
         time: new Date(),
         },
         ]);
-     }, []);
-
+    }, []);
 
     const mapRef = React.useRef();
     const onMapLoad = React.useCallback((map) => {
-        mapRef.current = map;
+      mapRef.current = map;
     }, []); 
 
     const panTo = React.useCallback(({ lat, lng }) => {
-        mapRef.current.panTo({ lat, lng });
-        mapRef.current.setZoom(14);
+      mapRef.current.panTo({ lat, lng });
+      mapRef.current.setZoom(14);
     }, []);
 
     if (loadError) return "Error loading map";
     if (!isLoaded) return "Loading Maps";
 
-
-    const handleAdd = (event) => {
+    const handleAdd = (event) => { //set values for the new location
       event.preventDefault();
 
       let location = {};
@@ -109,7 +115,7 @@ export default function NewMap(){
       addFetch(location);
     }
 
-    const addFetch = (location) => {
+    const addFetch = (location) => { //add new location to the database
 
       const init = {
           method: "POST",
@@ -242,7 +248,7 @@ export default function NewMap(){
               Ghost Alert!
             </h2>
             <div className="text-center">
-            <h4 className="text-primary"><u><a href="/about">{name}</a></u></h4>
+            <h4 className="text-primary"><u><a href={`/location/${selected2.locationId}`}>{name}</a></u></h4>
             <p> {address} </p>
             </div>
           </div>

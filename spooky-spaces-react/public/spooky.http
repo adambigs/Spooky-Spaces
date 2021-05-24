@@ -10,5 +10,9 @@ Content-Type: application/json
    "address": "1234 nope dr",
    "latitude": "45",
    "longitude": "45",
-   "locationName": "Haunted House" 
+   "locationName": "Haunted House"
 }
+
+###
+
+GET http://localhost:8080/api/location/1 HTTP/1.1
