@@ -19,7 +19,7 @@ values
 ('Modjeska Theater', '1134 W Historic Mitchell St', '43.01287596', '-87.92650196'),
 ('Hilton Garden Inn', '611 N Broadway', '43.03801065', '-87.90791599'),
 ('Ambassador Hotel', '2308 W Wisconsin Ave', '43.03955649', '-87.94191908'),
-('Skylight Music Theater', '158 N Broadway', '43.03238409', '87.90675348'),
+('Skylight Music Theater', '158 N Broadway', '43.03238409', '-87.90675348'),
 ('Sunset Playhouse', '700 Wall St, Elm Grove, WI', '43.04050189', '-88.07807748');
 
 insert into encounter_type
