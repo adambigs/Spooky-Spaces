@@ -3,7 +3,7 @@ import Button from './Button';
 import { useState } from 'react';
 import jwt_decode from "jwt-decode";
 
-function NavBar() {
+function Nav() {
   const [user, setUser] = useState(null);
 
   const login = (token) => {
@@ -70,9 +70,6 @@ function NavBar() {
         <li className="nav-item">
         <Link className="nav-link" to="/about">About</Link> 
         </li>
-        <li className="nav-item">
-         <Link className="nav-link" to="/encounters">Encounters</Link> 
-        </li>
       </ul>
     </div>
     </div>
@@ -81,13 +78,13 @@ function NavBar() {
       <>
       <li>{user.username}</li>
       <li className="m-2">
-      <Link className="btn btn-outline-info" onClick={logout} to='/agents/login'> Log Out</Link>
+      <Link className="btn btn-outline-info" onClick={logout} to='/login'> Log Out</Link>
       </li>
       </>
     ) : (
     <li className="btn-group">
-    <Link className="btn btn-outline-info" to='/agents/login'>Login</Link>
-    <Link className="btn btn-outline-info" to='/agents/signup'>Sign Up</Link>
+    <Link className="btn btn-outline-info" to='/login'>Login</Link>
+    <Link className="btn btn-outline-info" to='/register'>Sign Up</Link>
     </li>
     ) }
   </>

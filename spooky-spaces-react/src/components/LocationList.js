@@ -32,7 +32,7 @@ function LocationList(){
         {location.encounters.map(en => <Encounter key={en.encounterId} encounterId={en.encounterId} description={en.description}  />)}
         {console.log(location.encounters[0])}
         <div className="row">
-        <CommentList encounterId={location.encounters.encounterId}/>
+        
         </div>
         </div>   
     );
