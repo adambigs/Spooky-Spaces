@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect} from 'react';
 import { GoogleMap,
 useLoadScript,
 Marker,
@@ -11,7 +11,7 @@ import usePlacesAutocomplete, {
 } from "use-places-autocomplete";
 
 import { formatRelative } from "date-fns";
-import {Link} from "react-router-dom";
+import {Link, useHistory } from "react-router-dom";
 import LocationList from "./LocationList";
 import Location from './Location';
 import {
@@ -41,17 +41,23 @@ const options = {
     streetViewControl: true
 }
 
-// put in list of locations 
-
 export default function NewMap(){
     const {isLoaded, loadError} = useLoadScript({
         googleMapsApiKey: "AIzaSyDRbKGz40335THbxaRmojuQUTwdwK5SCZA",
         libraries
     });
-    
+
     const [markers, setMarkers] = useState([]);
+    
     const [selected, setSelected] = React.useState(null);
+    const [selected2, setSelected2] = React.useState(null);
     const [locations, setLocations] = useState([]); //List of all locations
+    const [messages, setMessages] = useState(""); //Any error messages
+
+    const [lat1, setLat1] = useState("");
+    const [lng1, setLng1] = useState("");
+    const [address, setAddress] = useState("");
+    const [name, setName] = useState("");
 
     useEffect(() => { //get the list of all location
         fetch("http://localhost:8080/api/location")
@@ -66,7 +72,7 @@ export default function NewMap(){
         .catch(console.log);
     }, []);
 
-    const onMapClick = React.useCallback((e) => {
+    const onMapClick = React.useCallback((e) => { //when the map is clicked a new shost maker is added
     setMarkers((current) => [
       ...current,
       {
@@ -77,6 +83,7 @@ export default function NewMap(){
         ]);
      }, []);
 
+
     const mapRef = React.useRef();
     const onMapLoad = React.useCallback((map) => {
         mapRef.current = map;
@@ -85,42 +92,99 @@ export default function NewMap(){
     const panTo = React.useCallback(({ lat, lng }) => {
         mapRef.current.panTo({ lat, lng });
         mapRef.current.setZoom(14);
-      }, []);
-
-   
+    }, []);
 
     if (loadError) return "Error loading map";
     if (!isLoaded) return "Loading Maps";
 
-    return ( 
-        <div>
 
-        <Search panTo={panTo} />
+    const handleAdd = (event) => {
+      event.preventDefault();
+
+      let location = {};
+      location["locationName"] = name;
+      location["address"] = address;
+      location["latitude"] = lat1;
+      location["longitude"] = lng1;
+      addFetch(location);
+    }
+
+    const addFetch = (location) => {
+
+      const init = {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+          },
+          body: JSON.stringify(location)
+      };
+
+      fetch("http://localhost:8080/api/location", init)
+        .then(response => {
+          if (response.status !== 201) {
+            return Promise.reject(`POST doesn't work  ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(json => {
+          setLocations([...locations, json]);
+          setMessages("");
+        })
+        .catch(console.log);
+    }
+
+    const handleAddressChange = (event) => {
+      setAddress(event.target.value);
+      console.log(event.target.value);
+    }
+
+    const handleNameChange = (event) => {
+      setName(event.target.value);
+      console.log(event.target.value);
+    }
+
+    return ( 
+      <div>
+
+      <Search panTo={panTo} />
         
-            <GoogleMap 
-            id="map"
-            mapContainerStyle={mapContainerStyle} 
-            zoom={15} 
-            center={center} 
-            options={options} 
-            onClick={onMapClick}
-            onLoad={onMapLoad}
-            >
+        <GoogleMap //generate the map
+          id="map"
+          mapContainerStyle={mapContainerStyle} 
+          zoom={15} 
+          center={center} 
+          options={options} 
+          onClick={onMapClick}
+          onLoad={onMapLoad}
+        >
+
+    {locations.map(l => <Marker key={l.locationId} locationId={l.locationId} locationName={l.locationName} address={l.address} latitude={l.latitude} longitude={l.longitude} //get all the locations and adds markers 
+    position={{lat: parseFloat(l.latitude), lng: parseFloat(l.longitude)}}
+    title={l.locationName}
+    onClick={() => { //set all necessary values after clicking on a marker
+            setSelected2(l);
+            setLat1(l.latitude);
+            setLng1(l.longitude);
+            setAddress(l.address);
+            setName(l.locationName);
+        }}
+    icon={{ //sets the maker to a ghost
+          url: '/ghost2.png',
+          origin: new window.google.maps.Point(0, 0),
+          anchor: new window.google.maps.Point(15, 15),
+          scaledSize: new window.google.maps.Size(30, 30),
+        }}  />)}
     
-  {/* {locations.map(l => <Location key={l.locationId} locationId={l.locationId} locationName={l.locationName} latitude={l.latitude} longitude={l.longitude} />)}
-            
-    {
-      for (i=0;i<locations.length;i++) {
-        <Marker />
-      }
-    } */}
   
-  {markers.map((marker) => (
-    <Marker 
+    {markers.map((marker) => ( //for generating new markers
+      <Marker 
         key={`${marker.lat}-${marker.lng}`} 
         position={{lat: marker.lat, lng: marker.lng}}
         onClick={() => {
             setSelected(marker);
+            setLat1(marker.lat);
+            setLng1(marker.lng);
         }}
         icon={{
             url: '/ghost2.png',
@@ -128,36 +192,71 @@ export default function NewMap(){
             anchor: new window.google.maps.Point(15, 15),
             scaledSize: new window.google.maps.Size(30, 30),
         }}     
-    /> 
+      /> 
     ))}
     
-    {selected ? (
+    {selected ? ( //for when a new ghost is generated
         <InfoWindow
           position={{ lat: selected.lat, lng: selected.lng }}
           onCloseClick={() => {
             setSelected(null);
+            setSelected2(null);
           }}
         >
           <div>
             <h2>
               <span role="img" aria-label="ghost">
                 👻
-              </span>{" "}
-              Ghost Alert
+              </span>
+              Ghost Alert!
             </h2>
-            <p></p>
-            <h3> Address: </h3>
-            <p><Link to="/about"> Details </Link></p>
+            <form onSubmit={handleAdd}> 
+            <div className="form-group text-center card border-light"> 
+            <input type="text" id="nameTextBox" placeholder="enter name here" onChange={handleNameChange} className="m-2"></input>
+            <input type="text" placeholder="enter address here" onChange={handleAddressChange} className="m-2"></input>
+            <input type="text" value={selected.lat} className="d-none" ></input>
+            <input type="text" value={selected.lng} className="d-none" ></input>
+            <div className="btn-group">
+            <button type="submit" className="btn btn-sm btn-dark">Submit</button>
+            <button type="reset" className="btn btn-sm btn-secondary">Cancel</button>
+            </div>
+            </div>
+            </form>
           </div>
         </InfoWindow>
       ) : null}
+
+      {selected2 ? ( //for an existing ghost
+        <InfoWindow
+          position={{ lat: parseFloat(lat1), lng: parseFloat(lng1) }}
+          onCloseClick={() => {
+            setSelected2(null);
+            setSelected(null); 
+          }}
+        >
+          <div className="text-center">
+            <h2>
+              <span role="img" aria-label="ghost">
+                👻
+              </span>
+              Ghost Alert!
+            </h2>
+            <div className="text-center">
+            <h4 className="text-primary"><u><a href="/about">{name}</a></u></h4>
+            <p> {address} </p>
+            </div>
+          </div>
+        </InfoWindow>
+      ) : null}
+
+      
     </GoogleMap>
     
     </div>
     );
 }
 
-function Locate({ panTo }) {
+function Locate({ panTo }) { //search bar at the top of the map
   return (
     <button
       className="locate"
