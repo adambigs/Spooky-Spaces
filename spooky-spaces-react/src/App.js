@@ -6,6 +6,8 @@ import {
 import Home from "./components/Home";
 import About from "./components/About";
 import NotFound from "./components/NotFound";
+import LocationList from "./components/LocationList";
+import Location from "./components/Location";
 
 
 function App() {
@@ -18,6 +20,9 @@ function App() {
             </Route>
             <Route path="/about">
               <About />
+            </Route>
+            <Route path="/location/:id">
+              <LocationList />
             </Route>
             <Route path="/encounters">
             

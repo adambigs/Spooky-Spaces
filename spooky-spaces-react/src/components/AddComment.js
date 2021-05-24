@@ -84,3 +84,4 @@ function AddComment({ username, encounterId }) {
 }
 
 export default AddComment;
+
