@@ -9,6 +9,7 @@ import NotFound from "./components/NotFound";
 import LocationList from "./components/LocationList";
 import Location from "./components/Location";
 
+
 function App() {
   return (
     <div className="App">

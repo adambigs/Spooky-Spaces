@@ -1,10 +1,11 @@
-import CommentList from './CommentList';
-import NavBar from './NavBar';
+import Nav from './Nav';
+import AddComment from './AddComment';
+
 
 function About() {
     return (
       <>
-      <NavBar />
+      <Nav />
       <div className="container">
       <h2>
           This app is for tourists or locals of Milwaukee that are interested in ghost encounters/hauntings. 
@@ -15,7 +16,6 @@ function About() {
           We have devised an app to solve that problem, and simultaneously generate a new scope of tourism revenue to our town, a ghost map.
       </h2>
       </div>
-      <CommentList />
       </>
     )
   }
