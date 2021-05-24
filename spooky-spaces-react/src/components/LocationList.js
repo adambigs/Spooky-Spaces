@@ -1,28 +1,39 @@
 import { useEffect, useState } from 'react';
-import Location from './Location';
+import {useParams } from "react-router-dom";
+import Encounter from "./Encounter";
+import CommentList from './CommentList';
 
 function LocationList(){
-    const [locations, setLocations] = useState([]); //List of all locations
+    const { id } = useParams();
 
-    useEffect(() => { //get the list of all location
-        fetch("http://localhost:8080/api/location")
-        .then(response => {
-          if (response.status !== 200) {
-          console.log(response);
-          return Promise.reject("GET didn't work");
-          }
-          return response.json();
-        })
-        .then(json => setLocations(json))
-        .catch(console.log);
-    }, []);
+    const defaultLocation = {
+      locationId: 0,
+      longitude: "",
+      latitude: "",
+      locationName: "",
+      address: "",
+      locationImage: "",
+      encounters: []
+    } 
+
+    const [location, setLocation] = useState(defaultLocation);
+    const [encounterId, setEncounterId] = useState(0);
+
+    useEffect (() => { //Get location by id
+      fetch(`http://localhost:8080/api/location/${id}`)
+      .then(response => response.json())
+      .then(data => setLocation(data))
+      .catch(error => console.log(error));
+  }, [id]);
 
     return ( //map all values to a location
-        <div className="card">
-          <h2 className="card-title ml-3">Location List</h2>
-          <ul className="list-group list-group-flush">
-            {locations.map(l => <Location key={l.locationId} locationId={l.locationId} locationName={l.locationName} address={l.address} latitude={l.latitude} longitude={l.longitude} />)}
-          </ul>
+        <div className="container text-center">
+        {location.locationName} {location.address}
+        {location.encounters.map(en => <Encounter key={en.encounterId} encounterId={en.encounterId} description={en.description}  />)}
+        {console.log(location.encounters[0])}
+        <div className="row">
+        <CommentList encounterId={location.encounters.encounterId}/>
+        </div>
         </div>   
     );
 }

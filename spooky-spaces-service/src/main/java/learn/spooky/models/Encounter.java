@@ -17,9 +17,9 @@ public class Encounter {
     @Min(value = 1, message = "Encounter id must be a positive number greater than zero")
     private int locationId;
 
-    private List<Comment> comment;
+    private List<Comment> comment = new ArrayList<>();
 
-    private List<EncounterType> encounterType;
+    private List<EncounterType> encounterType = new ArrayList<>();
 
     public Encounter(){};
 

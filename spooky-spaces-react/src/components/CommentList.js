@@ -1,10 +1,13 @@
-function CommentList() {
+import { useState, useEffect} from 'react';
+
+import Comment from './Comment';
+
+function CommentList({ encounterId }) {
   const [comments, setComments] = useState([]);
-  const { id } = useParams();
 
   useEffect(() => {
     //get the list of comments for encounter
-    fetch("http://localhost:8080/api/comments/${id}")
+    fetch(`http://localhost:8080/api/comment/${encounterId}`)
       .then((response) => {
         if (response.status !== 200) {
           console.log(response);
@@ -14,10 +17,10 @@ function CommentList() {
       })
       .then((json) => setComments(json))
       .catch(console.log);
-  }, []);
+  }, [encounterId]);
 
   return (
-    <div class="container">
+    <div className="container">
       {comments.map((comment) => (
         <Comment
           key={comment.commentId}

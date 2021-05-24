@@ -1,5 +1,6 @@
 package learn.spooky.data;
 
+import learn.spooky.data.mappers.EncounterMapper;
 import learn.spooky.data.mappers.LocationMapper;
 import learn.spooky.models.Location;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -39,9 +40,17 @@ public class LocationJdbcTemplateRepository implements  LocationRepository {
                 + "from location "
                 + "where location_id = ?;";
 
-        return jdbcTemplate.query(sql, new LocationMapper(), locationId).stream()
+
+
+        Location result = jdbcTemplate.query(sql, new LocationMapper(), locationId).stream()
                 .findFirst()
                 .orElse(null);
+
+        if(result != null){
+            addEncounters(result);
+        }
+
+        return result;
     }
 
     //Add a new location to the database
@@ -90,6 +99,19 @@ public class LocationJdbcTemplateRepository implements  LocationRepository {
                 location.getLocationName(),
                 location.getLocationImage(),
                 location.getLocationId()) > 0;
+    }
+
+    private void addEncounters(Location location){
+
+        final String sql = "select " +
+                "encounter_id, " +
+                "encounter_description, " +
+                "location_id " +
+                "from encounter " +
+                "where location_id = ?;";
+
+        var encounters = jdbcTemplate.query(sql, new EncounterMapper(), location.getLocationId());
+        location.setEncounters(encounters);
     }
 
     //Delete a location

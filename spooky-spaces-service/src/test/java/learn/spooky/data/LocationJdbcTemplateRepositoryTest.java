@@ -25,6 +25,13 @@ public class LocationJdbcTemplateRepositoryTest {
     }
 
     @Test
+    void findById() {
+        Location actual = repository.findById(1);
+        assertNotNull(actual);
+        assertNotNull(actual.encounters);
+    }
+
+    @Test
     void shouldFindAll() {
         List<Location> actual = repository.findAll();
         assertNotNull(actual);
