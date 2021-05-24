@@ -1,11 +1,11 @@
 import NewMap from './NewMap';
-import NavBar from './NavBar';
+import Nav from './Nav';
 
 function Home(){
 
     return (
         <>
-        <NavBar />
+        <Nav />
         <NewMap />
         </>
     );
