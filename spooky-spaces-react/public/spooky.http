@@ -20,7 +20,13 @@ GET http://localhost:8080/api/location/1 HTTP/1.1
 ###
 
 
-GET http://localhost:8080/api/encounter/29 HTTP/1.1
+GET http://localhost:8080/api/encounter HTTP/1.1
+
+
+###
+
+
+GET http://localhost:8080/api/encounter/19 HTTP/1.1
 
 
 ###

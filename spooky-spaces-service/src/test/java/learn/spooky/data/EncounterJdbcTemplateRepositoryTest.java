@@ -88,6 +88,7 @@ public class EncounterJdbcTemplateRepositoryTest {
         Encounter encounter = new Encounter();
         encounter.setDescription("Haunted broom closet");
         encounter.setLocationId(1);
+        encounter.setEncounterType(EncounterType.TOUCH);
         return encounter;
     }
 
