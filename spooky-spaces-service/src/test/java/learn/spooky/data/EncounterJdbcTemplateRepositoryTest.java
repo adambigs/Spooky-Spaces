@@ -95,6 +95,7 @@ public class EncounterJdbcTemplateRepositoryTest {
         Encounter encounter = new Encounter();
         encounter.setDescription("");
         encounter.setLocationId(1);
+        encounter.setEncounterType(EncounterType.TOUCH);
         return encounter;
     }
 

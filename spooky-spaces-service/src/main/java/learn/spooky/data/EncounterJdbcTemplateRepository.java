@@ -49,6 +49,7 @@ public class EncounterJdbcTemplateRepository implements EncounterRepository {
 
         if(result != null){
             addComments(result);
+            addEncounterTypes(result);
         }
 
         return result;
@@ -71,6 +72,8 @@ public class EncounterJdbcTemplateRepository implements EncounterRepository {
         if(rowsEffected <= 0) {
             return null;
         }
+
+
 
         encounter.setEncounterId(keyHolder.getKey().intValue());
         return encounter;
@@ -115,8 +118,9 @@ public class EncounterJdbcTemplateRepository implements EncounterRepository {
 
         final String sql = "select type_id from encounter_type where encounter_id = ?;";
 
-        var encounterTypes = jdbcTemplate.query(sql, new EncounterTypeMapper(), encounter.getEncounterId());
-        encounter.setEncounterType(encounterTypes);
+        var encounterType = jdbcTemplate.query(sql, new EncounterTypeMapper(), encounter.getEncounterId())
+                .stream().findFirst().orElse(EncounterType.NONE);
+        encounter.setEncounterType(encounterType);
     }
 
 }

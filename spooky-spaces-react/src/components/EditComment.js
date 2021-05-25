@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import Button from './Button';
 
-function EditComment({ username, commentId }) {
+function EditComment({ username }) {
     const defaultComment = {
       commentId: 0,
       username: "",
       rating: 0,
       description: "",
+      encounterId: 0
     };
   
     const [comment, setComment] = useState(defaultComment);
@@ -15,14 +16,15 @@ function EditComment({ username, commentId }) {
     const [rating, setRating] = useState(0);
     const [description, setDescription] = useState("");
   
+    const { id } = useParams();
     const history = useHistory();
   
     useEffect(() => {
-      fetch(`http://localhost:8080/api/comment/${commentId}`)
+      fetch(`http://localhost:8080/api/comment/${id}`)
         .then((response) => response.json())
         .then((data) => setComment(data))
         .catch((error) => console.log(error));
-    }, []);
+    }, [id]);
   
     const onSubmit = (e) => {
       e.preventDefault();
@@ -31,6 +33,7 @@ function EditComment({ username, commentId }) {
         commentId: id,
         rating: comment.rating,
         description: description.length > 0 ? description : comment.description,
+        // encounterId: encounter
       };
   
       const init = {

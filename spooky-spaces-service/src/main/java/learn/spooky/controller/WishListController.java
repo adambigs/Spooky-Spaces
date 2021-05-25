@@ -25,8 +25,8 @@ public class WishListController {
         return service.findAll();
     }
 
-    @GetMapping("/find")
-    public ResponseEntity<WishList> findByUsername(@RequestBody String username){
+    @GetMapping("/{username}")
+    public ResponseEntity<WishList> findByUsername(@PathVariable String username){
         WishList wishList = service.findByUsername(username);
         if (wishList == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

@@ -1,33 +1,7 @@
-import { useEffect, useState } from 'react';
-import {useParams } from "react-router-dom";
-import Encounter from "./Encounter";
-import CommentList from './CommentList';
-import Button from './Button';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { useHistory} from 'react-router-dom';
 
-function LocationList( {username}){
-    const { id } = useParams();
-
-    const defaultLocation = {
-      locationId: 0,
-      longitude: "",
-      latitude: "",
-      locationName: "",
-      address: "",
-      locationImage: "",
-      encounters: []
-    } 
-
-    const [location, setLocation] = useState(defaultLocation);
-
-    useEffect (() => { //Get location by id
-      fetch(`http://localhost:8080/api/location/${id}`)
-      .then(response => response.json())
-      .then(data => setLocation(data))
-      .catch(error => console.log(error));
-  });
-
+function AddWishlistItem({username, locationId}){;
   const history = useHistory();
 
   const handleAdd = (event) => {
@@ -36,7 +10,7 @@ function LocationList( {username}){
 
       let wishlist = {};
       wishlist["username"] = username;
-      wishlist["locationId"] = id;
+      wishlist["locationId"] = locationId;
       addWishlist(wishlist);
     }
 
@@ -97,15 +71,9 @@ function LocationList( {username}){
       } 
     }
 
-
-    return ( //map all values to a location
-      <div className="container text-center">
-      {location.locationName} {location.address}
-      <Button text="❤️" onClick={handleAdd}/>
-      <Link to={`/encounter/add/${id}`}><Button text="Add Encounter"/></Link>
-      {location.encounters.map(en => <Encounter key={en.encounterId} encounterId={en.encounterId} description={en.description} encounterType={en.encounterType}  />)}
-      </div>   
-    );
+  return ( 
+        handleAdd()
+  );
 }
 
-export default LocationList;
+export default AddWishlistItem;

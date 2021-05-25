@@ -58,22 +58,8 @@ export default function NewMap(){
     const [address, setAddress] = useState("");
     const [name, setName] = useState("");
 
-    const history = useHistory();
-    
-    const defaultLocation = {
-      locationId: 0,
-      longitude: "",
-      latitude: "",
-      locationName: "",
-      address: ""
-    } 
 
-    const onCloseClick2=() => {
-            setSelected2(null);
-            setSelected(null); 
-          }
 
-    const [location, setLocation] = useState(defaultLocation);
 
     useEffect(() => { //get the list of all location
         fetch("http://localhost:8080/api/location")
@@ -112,51 +98,6 @@ export default function NewMap(){
     if (loadError) return "Error loading map";
     if (!isLoaded) return "Loading Maps";
 
-    const handleAdd = (event) => { //set values for the new location
-      event.preventDefault();
-
-      let location = {};
-      location["locationName"] = name;
-      location["address"] = address;
-      location["latitude"] = lat1;
-      location["longitude"] = lng1;
-      addFetch(location);
-    }
-
-    const addFetch = (location) => { //add new location to the database
-
-      const init = {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json",
-              "Accept": "application/json"
-          },
-          body: JSON.stringify(location)
-      };
-
-      fetch("http://localhost:8080/api/location", init)
-        .then(response => {
-          if (response.status !== 201) {
-            return Promise.reject(`POST doesn't work  ${response.status}`);
-          }
-          return response.json();
-        })
-        .then(json => {
-          setLocations([...locations, json]);
-          setMessages("");
-        })
-        .catch(console.log);
-    }
-
-    const handleAddressChange = (event) => {
-      setAddress(event.target.value);
-      console.log(event.target.value);
-    }
-
-    const handleNameChange = (event) => {
-      setName(event.target.value);
-      console.log(event.target.value);
-    }
 
     return ( 
       <div>
@@ -190,55 +131,8 @@ export default function NewMap(){
           scaledSize: new window.google.maps.Size(30, 30),
         }}  />)}
     
-  
-    {markers.map((marker) => ( //for generating new markers
-      <Marker 
-        key={`${marker.lat}-${marker.lng}`} 
-        position={{lat: marker.lat, lng: marker.lng}}
-        onClick={() => {
-            setSelected(marker);
-            setLat1(marker.lat);
-            setLng1(marker.lng);
-        }}
-        icon={{
-            url: '/ghost2.png',
-            origin: new window.google.maps.Point(0, 0),
-            anchor: new window.google.maps.Point(15, 15),
-            scaledSize: new window.google.maps.Size(30, 30),
-        }}     
-      /> 
-    ))}
     
-    {selected ? ( //for when a new ghost is generated
-        <InfoWindow
-          position={{ lat: selected.lat, lng: selected.lng }}
-          onCloseClick={() => {
-            setSelected(null);
-            setSelected2(null);
-          }}
-        >
-          <div>
-            <h2>
-              <span role="img" aria-label="ghost">
-                👻
-              </span>
-              Ghost Alert!
-            </h2>
-            <form onSubmit={handleAdd}> 
-            <div className="form-group text-center card border-light"> 
-            <input type="text" id="nameTextBox" placeholder="enter name here" onChange={handleNameChange} className="m-2"></input>
-            <input type="text" placeholder="enter address here" onChange={handleAddressChange} className="m-2"></input>
-            <input type="text" value={selected.lat} className="d-none" ></input>
-            <input type="text" value={selected.lng} className="d-none" ></input>
-            <div className="btn-group">
-            <button type="submit" className="btn btn-sm btn-dark" >Submit</button>
-            <button type="reset" className="btn btn-sm btn-secondary">Cancel</button>
-            </div>
-            </div>
-            </form>
-          </div>
-        </InfoWindow>
-      ) : null}
+    
 
       {selected2 ? ( //for an existing ghost
         <InfoWindow
