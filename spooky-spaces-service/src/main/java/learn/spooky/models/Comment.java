@@ -4,7 +4,7 @@ import javax.validation.constraints.*;
 
 public class Comment {
 
-    @Min(value = 1, message = "Comment Id Must be greater than zero")
+//    @Min(value = 1, message = "Comment Id Must be greater than zero")
     private int commentId;
 
     @NotBlank

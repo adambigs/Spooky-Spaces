@@ -7,19 +7,19 @@ import java.util.List;
 
 public class Encounter {
 
-    @Min(value = 1, message = "Encounter id must be a positive number greater than zero")
+//    @Min(value = 1, message = "Encounter id must be a positive number greater than zero")
     private int encounterId;
 
     @NotNull(message = "Description can not be null")
     @NotBlank(message = "Description is required")
     private String description;
 
-    @Min(value = 1, message = "Encounter id must be a positive number greater than zero")
+    @Min(value = 0, message = "Location id must be a positive number greater than zero")
     private int locationId;
 
     private List<Comment> comment = new ArrayList<>();
 
-    private List<EncounterType> encounterType = new ArrayList<>();
+    private EncounterType encounterType;
 
     public Encounter(){};
 
@@ -30,11 +30,11 @@ public class Encounter {
         this.locationId = locationId;
     }
 
-    public List<EncounterType> getEncounterType() {
-        return new ArrayList<>(encounterType);
+    public EncounterType getEncounterType() {
+        return encounterType;
     }
 
-    public void setEncounterType(List<EncounterType> encounterType) {
+    public void setEncounterType(EncounterType encounterType) {
         this.encounterType = encounterType;
     }
 

@@ -17,7 +17,7 @@ function CommentList({ encounterId }) {
       })
       .then((json) => setComments(json))
       .catch(console.log);
-  }, [encounterId]);
+  });
 
   return (
     <div className="container">

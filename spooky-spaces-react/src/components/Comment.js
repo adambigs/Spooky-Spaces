@@ -30,8 +30,8 @@ function Comment({ commentId, username, rating, description, encounterId }) {
                 <div className="col-6"></div>
                 <div className="col-6"></div>
                 <div className="col-6">
-                <Link to={`api/comment/${commentId}`}><Button text="Edit" /></Link>
-                <Button text="Delete" />
+                <Link to={`/comment/edit/${commentId}`}><Button text="Edit" /></Link>
+                <Button text="Delete" onClick={() => deleteComment(commentId)}/>
                 </div>
             </div>    
             <div className="row mt-4">

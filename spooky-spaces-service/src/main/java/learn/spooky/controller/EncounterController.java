@@ -46,7 +46,7 @@ public class EncounterController {
         return ErrorHandler.build(result);
     }
 
-    @PutMapping
+    @PutMapping("/{encounterId}")
     public ResponseEntity<Object> update(@PathVariable int encounterId, @RequestBody Encounter encounter){
         if(encounterId != encounter.getEncounterId()){
             return new ResponseEntity<>(HttpStatus.CONFLICT);

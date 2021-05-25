@@ -9,6 +9,8 @@ function Register() { //for user without account
   const [username, setUsername] = useState(''); //set initial state for username and password
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]); //errors is initially empty
+  const [wishlists, setWishlists] = useState([]);
+  const [messages, setMessages] = useState("");
 
   const history = useHistory();
 
@@ -31,9 +33,16 @@ function Register() { //for user without account
         try {
           await auth.authenticate(username, password); //authnticate the new user
         history.push('/');
+
+          
+
         } catch (err) {
           throw new Error('Unknown Error');
-        }     
+        } 
+
+          
+
+        
       } else if (response.status === 400) { //if username is taken
         throw new Error('The account is already in use');
       } else {
@@ -42,6 +51,34 @@ function Register() { //for user without account
     } catch (err) {
       setErrors([err.message]);
     } 
+
+    
+    const wishlist = {
+      username: username,
+      locationId: 0
+    }
+        
+    const init = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(wishlist)
+    };
+    
+    fetch("http://localhost:8080/api/wishlist", init)
+      .then(response => {
+        if (response.status !== 201) {
+          return Promise.reject("POST doesn't work");
+        }
+        return response.json();
+      })
+      .then(json => {
+        setWishlists([...wishlists, json]);
+        setMessages("");
+      })
+      .catch(console.log);
   }
 
   return ( //for to collect username and password
