@@ -2,6 +2,7 @@ package learn.spooky.domain;
 
 import learn.spooky.data.EncounterRepository;
 import learn.spooky.models.Encounter;
+import learn.spooky.models.EncounterType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -102,6 +103,7 @@ public class EncounterServiceTest {
         Encounter encounter = new Encounter();
         encounter.setDescription("Haunted broom closet");
         encounter.setLocationId(1);
+        encounter.setEncounterType(EncounterType.TOUCH);
         return encounter;
     }
 }

@@ -29,7 +29,8 @@ public class EncounterJdbcTemplateRepository implements EncounterRepository {
         final String sql = "select " +
                 "encounter_id, " +
                 "encounter_description, " +
-                "location_id " +
+                "location_id, " +
+                "encounter_type " +
                 "from encounter;";
 
         return jdbcTemplate.query(sql, new EncounterMapper());
@@ -40,7 +41,8 @@ public class EncounterJdbcTemplateRepository implements EncounterRepository {
     public Encounter findById(int encounterId) {
         final String sql = "select encounter_id, " +
                 "encounter_description, " +
-                "location_id " +
+                "location_id, " +
+                "encounter_type " +
                 "from encounter " +
                 "where encounter_id = ?;";
 
@@ -49,7 +51,7 @@ public class EncounterJdbcTemplateRepository implements EncounterRepository {
 
         if(result != null){
             addComments(result);
-            addEncounterTypes(result);
+//            addEncounterTypes(result);
         }
 
         return result;
@@ -58,14 +60,15 @@ public class EncounterJdbcTemplateRepository implements EncounterRepository {
     @Override
     public Encounter add(Encounter encounter) {
         final String sql = "insert into encounter " +
-                "(encounter_description, location_id) " +
-                "values (?,?);";
+                "(encounter_description, location_id, encounter_type) " +
+                "values (?,?,?);";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         int rowsEffected = jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, encounter.getDescription());
             ps.setInt(2, encounter.getLocationId());
+            ps.setInt(3, encounter.getEncounterType().getTypeId());
             return ps;
             }, keyHolder);
 
@@ -83,12 +86,14 @@ public class EncounterJdbcTemplateRepository implements EncounterRepository {
     public boolean update(Encounter encounter) {
         final String sql = "update encounter set " +
                 "encounter_description = ?, " +
-                "location_id = ? " +
+                "location_id = ?, " +
+                "encounter_type = ? " +
                 "where encounter_id = ?;";
 
         return jdbcTemplate.update(sql,
                 encounter.getDescription(),
                 encounter.getLocationId(),
+                encounter.getEncounterType().getTypeId(),
                 encounter.getEncounterId()) > 0;
     }
 
@@ -114,13 +119,13 @@ public class EncounterJdbcTemplateRepository implements EncounterRepository {
         encounter.setComment(comments);
     }
 
-    private void addEncounterTypes(Encounter encounter){
-
-        final String sql = "select type_id from encounter_type where encounter_id = ?;";
-
-        var encounterType = jdbcTemplate.query(sql, new EncounterTypeMapper(), encounter.getEncounterId())
-                .stream().findFirst().orElse(EncounterType.NONE);
-        encounter.setEncounterType(encounterType);
-    }
+//    private void addEncounterTypes(Encounter encounter){
+//
+//        final String sql = "select type_id from encounter_type where encounter_id = ?;";
+//
+//        var encounterType = jdbcTemplate.query(sql, new EncounterTypeMapper(), encounter.getEncounterId())
+//                .stream().findFirst().orElse(EncounterType.NONE);
+//        encounter.setEncounterType(encounterType);
+//    }
 
 }

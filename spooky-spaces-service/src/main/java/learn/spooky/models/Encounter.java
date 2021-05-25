@@ -14,7 +14,7 @@ public class Encounter {
     @NotBlank(message = "Description is required")
     private String description;
 
-    @Min(value = 0, message = "Location id must be a positive number greater than zero")
+    @Min(value = 1, message = "Location id must be a positive number greater than zero")
     private int locationId;
 
     private List<Comment> comment = new ArrayList<>();
