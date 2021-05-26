@@ -12,7 +12,6 @@ function UpdateEncounter() {
 
   const [description, setDescription] = useState('');
   const [encounterType, setEncounterType] = useState(0);
-  const [locationId, setLocationId] = useState(0);
   const [encounter, setEncounter] = useState(defaultEncounter);
 
   const { id } = useParams();
@@ -23,7 +22,7 @@ function UpdateEncounter() {
       .then(response => response.json())
       .then(data => setEncounter(data))
       .catch(error => console.log(error));
-  }, [id]);
+  });
 
   const handleUpdate = (event) => {
     event.preventDefault();
@@ -31,7 +30,7 @@ function UpdateEncounter() {
     const newEncounter = { //set the values for the updated encounter
       encounterId: encounter.encounterId,
       description: description,
-      encounterType: encounter.encounterType,
+      encounterType: encounterType,
       locationId: encounter.locationId
     }
 
@@ -76,13 +75,19 @@ function UpdateEncounter() {
         <input type="text" id="encounterTextBox" className="form-control" readOnly="readOnly" value={encounter.encounterId}/>
       </div>
       <div className="form-group">
-        <label htmlFor="descriptionTextBox">Description</label>
-        <input type="text" id="descriptionTextBox" className="form-control" onChange={handleDescriptionChange} defaultValue={encounter.description}/>
+        <label htmlFor="descriptionTextBox">Description:</label>
+        <input type="text" id="descriptionTextBox" className="form-control" onChange={handleDescriptionChange} />
       </div>
-      <div className="mt-2">
-      <button type="submit" className="btn btn-info mx-1">Update</button>
-      <Button text="Cancel" onClick={() => history.goBack()} />
-      </div>
+      <div className="form-group">
+            <label htmlFor="encounterTypeDropDown">Encounter Type:</label>
+            <select id="encounterTypeDropDown" onChange={handleEncounterTypeChange} className="form-control">
+              <option value={1}>Visual</option>
+              <option value={2}>Auditory</option>
+              <option value={3}>Touch</option>
+              <option value={4}>Temperature</option>
+            </select>
+          </div>
+      <button type="submit" className="btn btn-primary mt-2">Update</button>
     </form>
     </div>    
   );

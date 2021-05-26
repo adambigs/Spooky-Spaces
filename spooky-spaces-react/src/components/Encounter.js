@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import CommentList from "./CommentList";
-import Button from "./Button";
-import { useHistory } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { Link, useHistory } from 'react-router-dom';
+import CommentList from './CommentList';
+import Button from './Button';
 
 function Encounter({ encounterId, description, encounterType }) {
   const defaultEncounter = {
@@ -12,11 +11,14 @@ function Encounter({ encounterId, description, encounterType }) {
     locationId: 0,
   };
 
-  const [encounter, setEncounter] = useState(defaultEncounter);
-  const [isActive, setIsActive] = useState("true");
-  // const [locationId, setLocationId] = useState();
+function Encounter({encounterId, description, encounterType, deleteEncounter}){
 
-  const history = useHistory();
+    const defaultEncounter = {
+      encounterId: 0,
+      description: "",
+      encounterType: 0,
+      locationId: 0
+    }
 
   const handleActive = () => {
     setIsActive(!isActive);
@@ -41,23 +43,41 @@ function Encounter({ encounterId, description, encounterType }) {
       .catch(console.log);
   };
 
-  useEffect(() => {
-    //Get encounter by id
-    fetch(`http://localhost:8080/api/encounter/${encounterId}`)
-      .then((response) => response.json())
-      .then((data) => setEncounter(data))
-      .catch((error) => console.log(error));
-  });
+    const handleActive = () => {
+      setIsActive(!isActive);
+    }
+    
+    const deleteById  = ()  => {
+      fetch(`http://localhost:8080/api/encounter/${encounterId}`, { method: "DELETE" })
+        .then((response) => {
+          if (response.status === 204) {
+            deleteEncounter(encounterId);
+          } else if (response.status === 404) {
+            return Promise.reject("Comment");
+          } else {
+            return Promise.reject(
+              `Delete failed with status: ${response.status}`
+            );
+          }
+        })
+        // .then(history.push(`/location/${encounter.locationId}`))
+        .catch(console.log);
+    };
 
-  return (
-    <div className="card pt-2 pb-2">
-      <div className="row">
-        <div className="col-6">Encounter Type: {encounter.encounterType}</div>
-        <div className="col-6">
-          <Link to={`/encounter/edit/${encounterId}`}>
-            <Button text="Edit" />
-          </Link>
-          <Button text="Delete" onClick={() => deleteEncounter(encounterId)} />
+    useEffect (() => { //Get encounter by id
+      fetch(`http://localhost:8080/api/encounter/${encounterId}`)
+      .then(response => response.json())
+      .then(data => setEncounter(data))
+      .catch(error => console.log(error));
+    }, []); //THERE BRACKETS LOSE THEIR MINDS
+
+    return(
+        <>
+        <div className="list-group-item text-center">
+        <Link to={`/encounter/edit/${encounterId}`}><Button text="Edit"/></Link>
+        <button className="btn btn-secondary ml-2"onClick={deleteById}>Delete</button>
+        <p>Type: {encounter.encounterType}</p>
+        <p>{description}</p> 
         </div>
       </div>
       <div className="card-body">

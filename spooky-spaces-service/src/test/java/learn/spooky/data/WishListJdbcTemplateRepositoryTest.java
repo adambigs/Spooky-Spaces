@@ -31,18 +31,18 @@ public class WishListJdbcTemplateRepositoryTest {
         assertNotNull(all);
     }
 
-    @Test
-    void shouldFindByUsername() {
-        WishList actual = repository.findByUsername("swagmaster9000"); //put in valid name
-        assertNotNull(actual);
-        assertEquals(2, actual.getWishListId());
-    }
-
-    @Test
-    void shouldNotFindInvalidId() {
-        WishList actual = repository.findByUsername("username"); //put in invalid name
-        assertNull(actual);
-    }
+//    @Test
+//    void shouldFindByUsername() {
+//        WishList actual = repository.findByUsername("swagmaster9000"); //put in valid name
+//        assertNotNull(actual);
+//        assertEquals(2, actual.getWishListId());
+//    }
+//
+//    @Test
+//    void shouldNotFindInvalidId() {
+//        WishList actual = repository.findByUsername("username"); //put in invalid name
+//        assertNull(actual);
+//    }
 
     @Test
     void shouldAdd() {

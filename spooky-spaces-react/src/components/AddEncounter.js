@@ -3,40 +3,31 @@ import { useHistory, useParams } from "react-router-dom";
 import Button from './Button';
 
 function AddEncounter() {
-  const [description, setDescription] = useState("");
-  const [encounters, setEncounters] = useState([]); //List of all encounters
-  const [messages, setMessages] = useState(""); //Any error messages
+    const [description, setDescription] = useState("");
+    const [encounters, setEncounters] = useState([]); //List of all encounters
+    const [messages, setMessages] = useState(""); //Any error messages
+    const [type, setType] = useState(0);
+    
+    const { id } = useParams();
 
-  const { id } = useParams();
+    const history = useHistory();
 
-  const history = useHistory();
+    const handleAdd = (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+    
+      let canAdd = true;
 
-  const handleAdd = (event) => {
-    event.preventDefault();
-    event.stopPropagation();
+      if (description.trim().length === 0){
+        canAdd = false;
+      }
 
-    let canAdd = true;
-
-    if (description.trim().length === 0) {
-      canAdd = false;
-    }
-
-    if (canAdd) {
-      //set all values from the encounter
-      let encounter = {};
-      encounter["description"] = description;
-      encounter["locationId"] = id;
-      addEncounter(encounter);
-    }
-  };
-
-  const addEncounter = (encounter) => {
-    let canSet = true;
-
-    for (let i = 0; i < encounters.length; i++) {
-      //make sure the encounterId does not already exist
-      if (encounter.encounterId === encounters[i].encounterId) {
-        canSet = false;
+      if (canAdd) { //set all values from the encounter
+        let encounter = {};
+        encounter["description"] = description;
+        encounter["locationId"] = id;
+        encounter["encounterType"] = type;
+        addEncounter(encounter);
       }
     }
 
@@ -92,8 +83,11 @@ function AddEncounter() {
     setDescription(event.target.value);
   };
 
-  return (
-    //form to get values for adding an encounter
+  const handleEncounterTypeChange = (event) => {
+    setType(event.target.value);
+  }
+
+  return ( //form to get values for adding an encounter
     <div className="card">
       <h2 className="card-title ml-3">Add Encounter</h2>
       <div className="card-body">
@@ -113,6 +107,16 @@ function AddEncounter() {
             </button>
             <Button text="Cancel" onClick={() => history.goBack()} />
           </div>
+          <div className="form-group">
+            <label htmlFor="encounterTypeDropDown">Encounter Type:</label>
+            <select id="encounterTypeDropDown" onChange={handleEncounterTypeChange} className="form-control" defaultValue={1}>
+              <option selected="selected" value={1}>Visual</option>
+              <option value={2}>Auditory</option>
+              <option value={3}>Touch</option>
+              <option value={4}>Temperature</option>
+            </select>
+          </div>
+          <button type="submit" className="btn btn-primary mt-2">Add</button>
         </form>
       </div>
     </div>
