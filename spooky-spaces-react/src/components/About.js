@@ -5,7 +5,6 @@ import AddComment from './AddComment';
 function About() {
     return (
       <>
-      <Nav />
       <div className="container">
       <p>
           This app is for tourists or locals of Milwaukee that are interested in ghost encounters/hauntings. 

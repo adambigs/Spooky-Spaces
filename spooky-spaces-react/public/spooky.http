@@ -16,3 +16,74 @@ Content-Type: application/json
 ###
 
 GET http://localhost:8080/api/location/1 HTTP/1.1
+
+###
+
+
+GET http://localhost:8080/api/encounter HTTP/1.1
+
+
+###
+
+
+GET http://localhost:8080/api/encounter/19 HTTP/1.1
+
+
+###
+PUT /api/encounter/1 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json 
+
+{
+   "encounterId": "1",
+   "description": "Built in 1915. It was formerly a treatment center for people with tuberculosis, many of whom passed away. Employees report hearing coughing in rooms.",
+   "encounterType": "4",
+   "locationId": "1"
+}
+
+
+###
+
+POST /api/encounter HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json 
+
+{
+   "description": "Built in 1915. It was formerly a treatment center for people with tuberculosis, many of whom passed away. Employees report hearing coughing in rooms.",
+   "locationId": "1",
+   "encounterType" : "3"
+}
+
+###
+
+POST /api/comment HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json 
+
+{  
+   "encounterId": 1,
+   "username": "coolguy",
+   "rating": 5,
+   "description": "aaaaa"
+   
+}
+
+###
+
+POST /api/wishlist HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json 
+
+{  
+   "username": "a@b.com",
+   "locationId": 1
+   
+}
+
+###
+
+GET /api/wishlist/a@b.com HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json 
+
+

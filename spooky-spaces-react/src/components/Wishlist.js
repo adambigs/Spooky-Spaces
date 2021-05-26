@@ -1,21 +1,32 @@
-function Wishlist({wishlistId, username, locationId, removeWishlist}){
-    const deleteById = () => { //delete a wishlist from the list
-        fetch(`http://localhost:8080/api/wishlist/${locationId}`, { method: "DELETE" })
-          .then(response => {
-            if (response.status === 204 || response.status === 404) {
-              removeWishlist(wishlistId);
-            } else {
-              return Promise.reject(`delete found with status ${response.status}`);
-            }
-        });
-    }
-    
-    return ( //display all wishlist atrobutes and update/delete buttons
-        <li className="list-group-item">
-          Wishlist {username}
-          <button className="btn btn-secondary ml-2" onClick={deleteById}>Delete</button>
-        </li>
-    );
+import { useEffect, useState } from 'react';
+import WishlistItem from './WishlistItem';
+
+function Wishlist({ username }) {
+    const [wishlists, setWishlists] = useState([]); //List of all wishlist
+    const [messages, setMessages] = useState(""); //Any error messages
+
+    useEffect(() => { //get the list of all wishlist
+        fetch(`http://localhost:8080/api/wishlist/${username}`)
+        .then(response => {
+          if (response.status !== 200) {
+          console.log(response);
+          return Promise.reject("GET didn't work");
+          }
+          return response.json();
+        })
+        .then(json => setWishlists(json))
+        .catch(console.log);
+    }, []);
+
+    return ( //map all values to an wishlist
+        <div className="card">
+          <h2 className="card-title ml-3">Wishlist List</h2>
+          <ul className="list-group list-group-flush">
+            {wishlists.map(w => <WishlistItem key={w.wishlistId} wishlistId={w.wishlistId} username={w.username} locationId={w.locationId} />)}
+          </ul>
+        </div>   
+      );
+
 }
 
 export default Wishlist;

@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react';
 import {useParams } from "react-router-dom";
 import Encounter from "./Encounter";
 import CommentList from './CommentList';
+import Button from './Button';
+import { Link } from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
 
-function LocationList(){
+function LocationList( { username }){
     const { id } = useParams();
 
     const defaultLocation = {
@@ -17,25 +20,87 @@ function LocationList(){
     } 
 
     const [location, setLocation] = useState(defaultLocation);
-    const [encounterId, setEncounterId] = useState(0);
 
     useEffect (() => { //Get location by id
       fetch(`http://localhost:8080/api/location/${id}`)
       .then(response => response.json())
       .then(data => setLocation(data))
       .catch(error => console.log(error));
-  }, [id]);
+  });
 
-    return ( //map all values to a location
-        <div className="container text-center">
-        {location.locationName} {location.address}
-        {location.encounters.map(en => <Encounter key={en.encounterId} encounterId={en.encounterId} description={en.description}  />)}
-        {console.log(location.encounters[0])}
-        <div className="row">
-        <CommentList encounterId={location.encounters.encounterId}/>
-        </div>
-        </div>   
-    );
+  const history = useHistory();
+
+  const handleAdd = (event) => {
+    let wishlist = {};
+    wishlist["username"] = username;
+    wishlist["locationId"] = id;
+    addWishlist(wishlist);
+  }
+
+  const [wishlists, setWishlists] = useState([]); 
+  const [messages, setMessages] = useState(""); //Any error messages
+
+    // useEffect(() => { //get the list of all wishlists
+    //     fetch(`http://localhost:8080/api/wishlist/${username}`)
+    //     .then(response => {
+    //       if (response.status !== 200) {
+    //       console.log(response);
+    //       return Promise.reject("GET didn't work");
+    //       }
+    //       return response.json();
+    //     })
+    //     .then(json => setWishlists(json))
+    //     .catch(console.log);
+    // });
+  
+    const addFetch = (wishlist) => { //add a wishlist
+      const init = {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json"
+          },
+          body: JSON.stringify(wishlist)
+      };
+
+      fetch(`http://localhost:8080/api/wishlist/`, init)
+        .then(response => {
+          if (response.status !== 201) {
+            return Promise.reject("POST doesn't work");
+          }
+          return response.json();
+        })
+        .then(json => {
+          setWishlists([...wishlists, json]);
+          setMessages("");
+        })
+        .then(history.goBack()) 
+        .catch(console.log);
+    }
+
+    const addWishlist = (wishlist) => {
+      let canSet = true;
+
+      for (let i = 0; i < wishlists.length; i++) { 
+        if (wishlist.wishlistId === wishlists[i].wishlistId) {
+          canSet = false;
+        }
+      }
+      if (canSet) {
+      addFetch(wishlist); //add wishlist item if no errors
+      } else {
+      setMessages("Location Id is alread on wishlist");
+      } 
+    }
+
+  return(
+    <div className="container text-center">
+    {location.locationName} {location.address}
+    <Button text="❤️" onClick={handleAdd}/>
+    <Link to={`/encounter/add/${id}`}><Button text="Add Encounter"/></Link>
+    {location.encounters.map(en => <Encounter key={en.encounterId} encounterId={en.encounterId} description={en.description} encounterType={en.encounterType}  />)}
+    </div>   
+  );
 }
 
 export default LocationList;
