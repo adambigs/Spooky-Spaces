@@ -98,11 +98,17 @@ function AddEncounter() {
   };
 
   return ( //form to get values for adding an encounter
-    <div className="card">
-      <h2 className="card-title ml-3">Add Encounter</h2>
-      <div className="card-body">
+    <div className="container mt-5">
+      <h2 className="pt-3">Add Encounter</h2>
         <form onSubmit={handleAdd}>
           <div className="form-group">
+          <label htmlFor="encounterTypeDropDown">Encounter Type:</label>
+          <select id="encounterTypeDropDown" onChange={handleEncounterTypeChange} className="form-control" defaultValue={1}>
+            <option selected="selected" value={1}>Visual</option>
+            <option value={2}>Auditory</option>
+            <option value={3}>Touch</option>
+            <option value={4}>Temperature</option>
+          </select>
             <label htmlFor="descriptionTextBox">Description:</label>
             <input
               type="text"
@@ -117,19 +123,8 @@ function AddEncounter() {
             </button>
             <Button text="Cancel" onClick={() => history.goBack()} />
           </div>
-          <div className="form-group">
-            <label htmlFor="encounterTypeDropDown">Encounter Type:</label>
-            <select id="encounterTypeDropDown" onChange={handleEncounterTypeChange} className="form-control" defaultValue={1}>
-              <option selected="selected" value={1}>Visual</option>
-              <option value={2}>Auditory</option>
-              <option value={3}>Touch</option>
-              <option value={4}>Temperature</option>
-            </select>
-          </div>
-          <button type="submit" className="btn btn-primary mt-2">Add</button>
         </form>
       </div>
-    </div>
   );
 }
 

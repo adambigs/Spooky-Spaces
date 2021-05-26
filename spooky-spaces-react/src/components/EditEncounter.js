@@ -87,7 +87,12 @@ function UpdateEncounter() {
               <option value={4}>Temperature</option>
             </select>
           </div>
-      <button type="submit" className="btn btn-primary mt-2">Update</button>
+          <div className="mt-2">
+          <button type="submit" className="btn btn-info mx-1">
+            Update
+          </button>
+          <Button text="Cancel" onClick={() => history.goBack()} />
+        </div>
     </form>
     </div>    
   );

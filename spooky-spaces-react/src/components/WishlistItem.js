@@ -33,9 +33,18 @@ function Wishlist({wishlistId, username, locationId, deleteWishlistItem}){
   };
   
   return(
-    <div className="card mt-3">
-      {location.locationName}: {location.address} <button className="btn btn-info ms-3" onClick={deleteWishlistItem}>Delete</button>
+    <div className="container mt-3">
+    <div className="card pt pb-3 text-center">
+      <div className="row">
+      <div className="col-6">
+      <h5>{location.locationName}: {location.address}</h5>
+      </div>
+      <div className="col-6">
+      <button className="btn btn-info" onClick={deleteById}>Delete</button>
+      </div>
+    </div>
     </div>  
+    </div>
   ); 
 }
 
