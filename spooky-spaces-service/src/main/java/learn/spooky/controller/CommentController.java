@@ -33,7 +33,7 @@ public class CommentController {
         return ResponseEntity.ok(comment);
     }
 
-    @GetMapping("/{encounterId}")
+    @GetMapping("/encounter/{encounterId}")
     public ResponseEntity<List> findByEncounter(@PathVariable int encounterId){
         List<Comment> comments= service.findByEncounter(encounterId);
         if (comments == null) {

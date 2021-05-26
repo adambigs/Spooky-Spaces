@@ -49,17 +49,18 @@ function Encounter({encounterId, description, encounterType, deleteEncounter}){
     }, []); //THERE BRACKETS LOSE THEIR MINDS
 
     return(
-      <>
-        <div className="list-group-item text-center">
-        <Link to={`/encounter/edit/${encounterId}`}><Button text="Edit"/></Link>
-        <button className="btn btn-secondary ml-2"onClick={deleteById}>Delete</button>
-        <p>Type: {encounter.encounterType}</p>
-        <p>{description}</p> 
-        </div>
+      <div className="card pt-2">
+        <div className="row">
+          <div className="col-6">
+          <p>Type: {encounter.encounterType}</p>
+          </div>
+          <div className="col-6">
+          <Link to={`/encounter/edit/${encounterId}`}><Button text="Edit"/></Link>
+          <button className="btn btn-info ml-2"onClick={deleteById}>Delete</button>
+          </div>
+        </div>  
       <div className="card-body">
         <p>{description}</p>
-      </div>
-      <div>
         <Link to={`/comment/add/${encounterId}`}>
           <Button text="Add Comment" />
         </Link>
@@ -74,7 +75,7 @@ function Encounter({encounterId, description, encounterType, deleteEncounter}){
           <CommentList encounterId={encounterId} />
         </span>
       </div>
-      </>
+      </div>
   );
 }
 

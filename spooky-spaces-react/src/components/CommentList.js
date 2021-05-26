@@ -7,7 +7,7 @@ function CommentList({ encounterId }) {
 
   useEffect(() => {
     //get the list of comments for encounter
-    fetch(`http://localhost:8080/api/comment/${encounterId}`)
+    fetch(`http://localhost:8080/api/comment/encounter/${encounterId}`)
       .then((response) => {
         if (response.status !== 200) {
           console.log(response);
