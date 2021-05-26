@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="18435975-94c6-4d83-88f0-f1a0e100006d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/learn/spooky/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/spooky/controller/CommentController.java" afterDir="false" />
-    </list>
+    <list default="true" id="18435975-94c6-4d83-88f0-f1a0e100006d" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

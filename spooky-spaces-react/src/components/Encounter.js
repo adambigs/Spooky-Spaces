@@ -3,15 +3,11 @@ import { Link, useHistory } from 'react-router-dom';
 import CommentList from './CommentList';
 import Button from './Button';
 
-function Encounter({ encounterId, description, encounterType }) {
-  const defaultEncounter = {
-    encounterId: 0,
-    description: "",
-    encounterType: 0,
-    locationId: 0,
-  };
-
 function Encounter({encounterId, description, encounterType, deleteEncounter}){
+  
+  const [isActive, setIsActive] = useState("true");
+
+  const history = useHistory();
 
     const defaultEncounter = {
       encounterId: 0,
@@ -19,12 +15,14 @@ function Encounter({encounterId, description, encounterType, deleteEncounter}){
       encounterType: 0,
       locationId: 0
     }
+    
+  const [encounter, setEncounter] = useState(defaultEncounter);
 
   const handleActive = () => {
     setIsActive(!isActive);
   };
 
-  const deleteEncounter = () => {
+  const deleteById = () => {
     fetch(`http://localhost:8080/api/encounter/${encounterId}`, {
       method: "DELETE",
     })
@@ -43,27 +41,6 @@ function Encounter({encounterId, description, encounterType, deleteEncounter}){
       .catch(console.log);
   };
 
-    const handleActive = () => {
-      setIsActive(!isActive);
-    }
-    
-    const deleteById  = ()  => {
-      fetch(`http://localhost:8080/api/encounter/${encounterId}`, { method: "DELETE" })
-        .then((response) => {
-          if (response.status === 204) {
-            deleteEncounter(encounterId);
-          } else if (response.status === 404) {
-            return Promise.reject("Comment");
-          } else {
-            return Promise.reject(
-              `Delete failed with status: ${response.status}`
-            );
-          }
-        })
-        // .then(history.push(`/location/${encounter.locationId}`))
-        .catch(console.log);
-    };
-
     useEffect (() => { //Get encounter by id
       fetch(`http://localhost:8080/api/encounter/${encounterId}`)
       .then(response => response.json())
@@ -72,14 +49,13 @@ function Encounter({encounterId, description, encounterType, deleteEncounter}){
     }, []); //THERE BRACKETS LOSE THEIR MINDS
 
     return(
-        <>
+      <>
         <div className="list-group-item text-center">
         <Link to={`/encounter/edit/${encounterId}`}><Button text="Edit"/></Link>
         <button className="btn btn-secondary ml-2"onClick={deleteById}>Delete</button>
         <p>Type: {encounter.encounterType}</p>
         <p>{description}</p> 
         </div>
-      </div>
       <div className="card-body">
         <p>{description}</p>
       </div>
@@ -98,7 +74,7 @@ function Encounter({encounterId, description, encounterType, deleteEncounter}){
           <CommentList encounterId={encounterId} />
         </span>
       </div>
-    </div>
+      </>
   );
 }
 
