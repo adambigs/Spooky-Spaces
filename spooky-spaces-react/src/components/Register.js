@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, useLocation } from 'react-router-dom';
 import AuthContext from './AuthContext';
-import Errors from './Errors';
+import Button from './Button'
 
 function Register() { //for user without account
   const auth = useContext(AuthContext);
@@ -13,6 +13,9 @@ function Register() { //for user without account
   const [messages, setMessages] = useState("");
 
   const history = useHistory();
+  const location = useLocation();
+
+  const { state: { from } = { from : '/' } } = location;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -82,24 +85,26 @@ function Register() { //for user without account
   }
 
   return ( //for to collect username and password
-    <div>
-      <h2>Register</h2>
-      <Errors errors={errors} />
-      <form onSubmit={handleSubmit}>
-      <div>
-          <label>Username:</label>
-          <input type="text" onChange={(event) => setUsername(event.target.value)} />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input type="password" onChange={(event) => setPassword(event.target.value)} />
-        </div>
-        <div>
-          <button class="btn btn-primary" type="submit">Register</button>
-          <Link to={'/login'} class="btn btn-secondary">Existing user</Link>
-        </div>
-      </form>
+    <div className="container text-center mt-5">
+    <div className="row">
+    <h2 className="mt-3">Register</h2>
+    <form onSubmit={handleSubmit}>
+    <div className="mt-2">
+        <label className="me-2">Username </label>
+        <input type="text" onChange={(event) => setUsername(event.target.value)} />
+      </div>
+      <div className="mt-1">
+        <label className="me-2">Password </label>
+        <input className="ms-1" type="password" onChange={(event) => setPassword(event.target.value)} />
+      </div>
+      <div className="mt-2 text-center">
+        <button className="btn btn-info mx-1" type="submit">Register</button>
+        <Link to={from}><Button text="Cancel" /></Link>
+        <Link to="/login"><Button text="Login" /></Link>
+      </div>
+    </form>
     </div>
+  </div>
   );
 }
 

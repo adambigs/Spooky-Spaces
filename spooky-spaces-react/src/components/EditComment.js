@@ -143,11 +143,11 @@ function EditComment({ user }) {
             </label>
             <textarea className="form-control" id="commentText" rows="4"  defaultValue={comment.description} onChange={(e) => setDescription(e.target.value)} />
           </div>
-          <button type="submit" className="btn btn-outline-light">
-            Submit
-          </button>
-          <Button text="Cancel" onClick={() => history.goBack()} />
-        </form>
+          <div className="mt-2">
+      <button type="submit" className="btn btn-info mx-1">Update</button>
+      <Button text="Cancel" onClick={() => history.goBack()} />
+      </div>
+      </form>
       </div>
     );
   }
