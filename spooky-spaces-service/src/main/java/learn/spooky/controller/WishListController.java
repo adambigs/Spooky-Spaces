@@ -26,12 +26,10 @@ public class WishListController {
     }
 
     @GetMapping("/{username}")
-    public ResponseEntity<WishList> findByUsername(@PathVariable String username){
-        WishList wishList = service.findByUsername(username);
-        if (wishList == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return ResponseEntity.ok(wishList);
+    public List<WishList> findByUsername(@PathVariable String username){
+        List<WishList> wishList = service.findByUsername(username);
+
+        return wishList;
     }
 
     @PostMapping
@@ -57,8 +55,8 @@ public class WishListController {
         return ErrorHandler.build(result);
     }
 
-    @DeleteMapping("/{locationId}")
-    public ResponseEntity<Object> deleteById(@PathVariable int locationId,@RequestBody String username) {
+    @DeleteMapping("/{username}/{locationId}")
+    public ResponseEntity<Object> deleteById(@PathVariable String username, @PathVariable int locationId) {
         Result<WishList> result = service.deleteByUsername(username, locationId);
         if (result.isSuccess()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);

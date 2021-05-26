@@ -10,7 +10,7 @@ public interface WishListRepository {
     List<WishList> findAll();
 
     //Find by Id
-    WishList findByUsername(String username);
+    List<WishList> findByUsername(String username);
 
     //Add
     WishList add(WishList wishList);

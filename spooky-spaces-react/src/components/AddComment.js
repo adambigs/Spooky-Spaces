@@ -3,9 +3,10 @@ import { useHistory, useParams } from "react-router-dom";
 import Button from './Button';
 
 
-function AddComment({ username }) {
+function AddComment({ user }) {
     const [rating, setRating] = useState(0);
     const [description, setDescription] = useState("");
+    
 
     const { id } = useParams();
 
@@ -15,10 +16,10 @@ function AddComment({ username }) {
       e.preventDefault();
 
       const newComment = {
-        username: username,
+        username: user.username,
         rating: rating,
         description: description,
-        encounterId: id,
+        encounterId: id
       };
 
       const init = {
@@ -41,9 +42,18 @@ function AddComment({ username }) {
         .catch(console.log);
     };
 
+    const handleDescriptionChange = (event) => {
+      setDescription(event.target.value)
+    }
+
+    const handleRatingChange = (event) => {
+      setRating(event.target.value)
+    }
+
+
   return (
     <div className="container">
-      <p>{username}</p>
+      <p>{user.username}</p>
       <p>Rating</p> 
       <form className="form-inline" onSubmit={onSubmit}>
       <div className="form-check form-check-inline mb-3">
@@ -67,14 +77,14 @@ function AddComment({ username }) {
         <label className="form-check-label" htmlFor="5">5</label>
       </div>
         <div className="mb-3">
-          <label htmlFor="commentText" className="form-label">
+          <label htmlFor="commentText" className="form-label" >
             Comment
           </label>
-          <textarea
+          <input type="text"
             className="form-control"
             id="commentText"
             rows="4"
-          />
+          onChange={handleDescriptionChange} />
         </div>
         <button type="submit" className="btn btn-outline-light">
           Submit
