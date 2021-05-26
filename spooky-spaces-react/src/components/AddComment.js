@@ -3,9 +3,10 @@ import { useHistory, useParams } from "react-router-dom";
 import Button from './Button';
 
 
-function AddComment({ username }) {
+function AddComment({ user }) {
     const [rating, setRating] = useState(0);
     const [description, setDescription] = useState("");
+    
 
     const { id } = useParams();
 
@@ -15,10 +16,10 @@ function AddComment({ username }) {
       e.preventDefault();
 
       const newComment = {
-        username: username,
+        username: user.username,
         rating: rating,
         description: description,
-        encounterId: id,
+        encounterId: id
       };
 
       const init = {
@@ -41,40 +42,49 @@ function AddComment({ username }) {
         .catch(console.log);
     };
 
+    const handleDescriptionChange = (event) => {
+      setDescription(event.target.value)
+    }
+
+    const handleRatingChange = (event) => {
+      setRating(event.target.value)
+    }
+
+
   return (
     <div className="container">
-      <p>{username}</p>
+      <p>{user.username}</p>
       <p>Rating</p> 
       <form className="form-inline" onSubmit={onSubmit}>
       <div className="form-check form-check-inline mb-3">
-        <input className="form-check-input" type="radio" name="rating" id="1" value="1" />
+        <input className="form-check-input" type="radio" name="rating" id="1" value="1" onChange={handleRatingChange}/>
         <label className="form-check-label" htmlFor="1">1</label>
       </div>
       <div className="form-check form-check-inline">
-        <input className="form-check-input" type="radio" name="rating" id="2" value="2" />
+        <input className="form-check-input" type="radio" name="rating" id="2" value="2" onChange={handleRatingChange}/>
         <label className="form-check-label" htmlFor="2">2</label>
       </div>
       <div className="form-check form-check-inline">
-        <input className="form-check-input" type="radio" name="rating" id="3" value="3" />
+        <input className="form-check-input" type="radio" name="rating" id="3" value="3" onChange={handleRatingChange}/>
         <label className="form-check-label" htmlFor="3">3</label>
       </div>
       <div className="form-check form-check-inline">
-        <input className="form-check-input" type="radio" name="rating" id="4" value="4" />
+        <input className="form-check-input" type="radio" name="rating" id="4" value="4" onChange={handleRatingChange}/>
         <label className="form-check-label" htmlFor="4">4</label>
       </div>
       <div className="form-check form-check-inline">
-        <input className="form-check-input" type="radio" name="rating" id="5" value="5" />
+        <input className="form-check-input" type="radio" name="rating" id="5" value="5" onChange={handleRatingChange} />
         <label className="form-check-label" htmlFor="5">5</label>
       </div>
         <div className="mb-3">
-          <label htmlFor="commentText" className="form-label">
+          <label htmlFor="commentText" className="form-label" >
             Comment
           </label>
-          <textarea
+          <input type="text"
             className="form-control"
             id="commentText"
             rows="4"
-          />
+          onChange={handleDescriptionChange} />
         </div>
         <button type="submit" className="btn btn-outline-light">
           Submit

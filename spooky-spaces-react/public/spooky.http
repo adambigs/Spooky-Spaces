@@ -61,11 +61,59 @@ Host: localhost:8080
 Content-Type: application/json 
 
 {  
-   "encounterId": 1,
+   "encounterId": 2,
    "username": "coolguy",
-   "rating": 5,
-   "description": "aaaaa"
+   "description": "aaaaa",
+   "rating": 5
    
 }
 
+###
+
+PUT /api/comment/2 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json 
+
+{  
+   "commentId": 2,
+   "encounterId": 2,
+   "username": "bob",
+   "description": "update works",
+   "rating": 5
+   
+}
+
+###
+
+GET /api/comment HTTP/1.1
+Host: localhost:8080
+
+###
+
+GET /api/comment/2 HTTP/1.1
+Host: localhost:8080
+
+###
+
+POST /api/wishlist HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json 
+
+{  
+   "username": "a@b.com",
+   "locationId": 4
+   
+}
+
+###
+
+GET /api/wishlist/a@b.com HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json 
+
+###
+
+DELETE  /api/wishlist/a@b.com/12 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json 
 

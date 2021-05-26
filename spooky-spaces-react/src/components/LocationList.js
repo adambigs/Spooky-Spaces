@@ -6,8 +6,11 @@ import Button from './Button';
 import { Link } from 'react-router-dom';
 import { useHistory} from 'react-router-dom';
 
-function LocationList( {username}){
+function LocationList( { user }){
     const { id } = useParams();
+
+    const [encounters, setEncounters] = useState([]);
+
 
     const defaultLocation = {
       locationId: 0,
@@ -26,35 +29,32 @@ function LocationList( {username}){
       .then(response => response.json())
       .then(data => setLocation(data))
       .catch(error => console.log(error));
-  });
+  },[]);
 
   const history = useHistory();
-
+  
   const handleAdd = (event) => {
-    event.preventDefault();
-    event.stopPropagation()
-
-      let wishlist = {};
-      wishlist["username"] = username;
-      wishlist["locationId"] = id;
-      addWishlist(wishlist);
-    }
+    let wishlist = {};
+    wishlist["username"] = user.username;
+    wishlist["locationId"] = id;
+    addWishlist(wishlist);
+  }
 
   const [wishlists, setWishlists] = useState([]); 
   const [messages, setMessages] = useState(""); //Any error messages
 
-    useEffect(() => { //get the list of all wishlists
-        fetch(`http://localhost:8080/api/wishlist/${username}`)
-        .then(response => {
-          if (response.status !== 200) {
-          console.log(response);
-          return Promise.reject("GET didn't work");
-          }
-          return response.json();
-        })
-        .then(json => setWishlists(json))
-        .catch(console.log);
-    });
+    // useEffect(() => { //get the list of all wishlists
+    //     fetch(`http://localhost:8080/api/wishlist/${username}`)
+    //     .then(response => {
+    //       if (response.status !== 200) {
+    //       console.log(response);
+    //       return Promise.reject("GET didn't work");
+    //       }
+    //       return response.json();
+    //     })
+    //     .then(json => setWishlists(json))
+    //     .catch(console.log);
+    // });
   
     const addFetch = (wishlist) => { //add a wishlist
       const init = {
@@ -66,7 +66,7 @@ function LocationList( {username}){
           body: JSON.stringify(wishlist)
       };
 
-      fetch(`http://localhost:8080/api/wishlist/${username}`, init)
+      fetch(`http://localhost:8080/api/wishlist/`, init)
         .then(response => {
           if (response.status !== 201) {
             return Promise.reject("POST doesn't work");
@@ -76,36 +76,42 @@ function LocationList( {username}){
         .then(json => {
           setWishlists([...wishlists, json]);
           setMessages("");
-        })
-        .then(history.goBack()) 
+        }, [])
+        .then(history.push(`/wishlist/${wishlist.username}`)) 
         .catch(console.log);
     }
 
     const addWishlist = (wishlist) => {
       let canSet = true;
 
-      for (let i = 0; i < wishlists.length; i++) { //make sure the wishlistId does not already exist
+      for (let i = 0; i < wishlists.length; i++) { 
         if (wishlist.wishlistId === wishlists[i].wishlistId) {
           canSet = false;
         }
       }
-
       if (canSet) {
-      addFetch(wishlist); //add wishlist if no errors
+      addFetch(wishlist); //add wishlist item if no errors
       } else {
-      setMessages("wishlist Id is taken");
+      setMessages("Location Id is already on wishlist");
       } 
     }
 
+    const deleteEncounters = () => {
+    let newEncounters = [];
+      setEncounters(newEncounters);
+    }
 
-    return ( //map all values to a location
-      <div className="container text-center">
-      {location.locationName} {location.address}
-      <Button text="❤️" onClick={handleAdd}/>
-      <Link to={`/encounter/add/${id}`}><Button text="Add Encounter"/></Link>
-      {location.encounters.map(en => <Encounter key={en.encounterId} encounterId={en.encounterId} description={en.description} encounterType={en.encounterType}  />)}
-      </div>   
-    );
+  return(
+    <div className="container text-center mt-5">
+    <div className="row">
+    <h3 className="mt-4">{location.locationName} <Button text="❤️" onClick={handleAdd}/> <Link to={`/encounter/add/${id}`}><Button text="Add Encounter"/></Link></h3>
+    <h5>{location.address}</h5>
+    </div>
+    <div>
+    {location.encounters.map(en => <Encounter key={en.encounterId} encounterId={en.encounterId} description={en.description} encounterType={en.encounterType}  />)}
+    </div>
+    </div>   
+  );
 }
 
 export default LocationList;

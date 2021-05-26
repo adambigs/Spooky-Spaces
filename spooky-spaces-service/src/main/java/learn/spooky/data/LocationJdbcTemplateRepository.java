@@ -106,7 +106,8 @@ public class LocationJdbcTemplateRepository implements  LocationRepository {
         final String sql = "select " +
                 "encounter_id, " +
                 "encounter_description, " +
-                "location_id " +
+                "location_id, " +
+                "encounter_type " +
                 "from encounter " +
                 "where location_id = ?;";
 

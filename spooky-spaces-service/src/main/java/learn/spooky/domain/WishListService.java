@@ -28,7 +28,7 @@ public class WishListService {
 
     //find by username
     // validation done in the controller
-    public WishList findByUsername(String username) {return  repository.findByUsername(username);}
+    public List<WishList> findByUsername(String username) {return  repository.findByUsername(username);}
 
     //add
     public Result<WishList> add(WishList wishList) {

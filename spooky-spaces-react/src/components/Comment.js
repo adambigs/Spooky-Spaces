@@ -20,21 +20,18 @@ function Comment({ commentId, username, rating, description, encounterId }) {
       };
     
     return (
-        <div className="container text-center border">
+      <div className="card mt-3 pt-2">
             <div className="row">
                 <div className="col-6">
-                <p>{username}</p>
+                <h6>{username}</h6>
                 </div>
-                <div className="col-6">{rating}</div>
-                <div className="col-6"></div>
-                <div className="col-6"></div>
-                <div className="col-6"></div>
                 <div className="col-6">
                 <Link to={`/comment/edit/${commentId}`}><Button text="Edit" /></Link>
                 <Button text="Delete" onClick={() => deleteComment(commentId)}/>
                 </div>
             </div>    
             <div className="row mt-4">
+              <p>Rating: {rating}</p>
                 <p>{description}</p>
             </div>    
         </div>

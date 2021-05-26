@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import AuthContext from './AuthContext';
+import Button from './Button';
 import Errors from './Errors';
 
 function Login() { //If the user already has an account
@@ -27,24 +28,25 @@ function Login() { //If the user already has an account
   }
 
   return ( //Form to get username and password, add link if the user doesn't have an account
-    <div>
-      <h2>Login</h2>
-      <Errors errors={errors} />
+    <div className="container text-center mt-5">
+      <div className="row">
+      <h2 className="mt-3">Login</h2>
       <form onSubmit={handleSubmit}>
-      <div>
-          <label>Username:</label>
+      <div className="mt-2">
+          <label className="me-2">Username </label>
           <input type="text" onChange={(event) => setUsername(event.target.value)} />
         </div>
-        <div>
-          <label>Password:</label>
-          <input type="password" onChange={(event) => setPassword(event.target.value)} />
+        <div className="mt-1">
+          <label className="me-2">Password </label>
+          <input className="ms-1" type="password" onChange={(event) => setPassword(event.target.value)} />
         </div>
-        <div>
-          <button className="btn btn-primary ml-2" type="submit">Login</button>
-          <Link className="btn btn-secondary ml-2" to={from}>Cancel</Link>
-          <Link className="btn btn-warning ml-2" to="/register">Create Account</Link>
+        <div className="mt-2 text-center">
+          <button className="btn btn-info mx-1" type="submit">Login</button>
+          <Link to={from}><Button text="Cancel" /></Link>
+          <Link to="/register"><Button text="Register" /></Link>
         </div>
       </form>
+      </div>
     </div>
   );
 };

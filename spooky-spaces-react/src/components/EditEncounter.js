@@ -1,5 +1,6 @@
 import { useEffect,useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import Button from './Button';
 
 function UpdateEncounter() {
   const defaultEncounter = {
@@ -11,7 +12,6 @@ function UpdateEncounter() {
 
   const [description, setDescription] = useState('');
   const [encounterType, setEncounterType] = useState(0);
-  const [locationId, setLocationId] = useState(0);
   const [encounter, setEncounter] = useState(defaultEncounter);
 
   const { id } = useParams();
@@ -22,7 +22,7 @@ function UpdateEncounter() {
       .then(response => response.json())
       .then(data => setEncounter(data))
       .catch(error => console.log(error));
-  }, [id]);
+  });
 
   const handleUpdate = (event) => {
     event.preventDefault();
@@ -30,7 +30,7 @@ function UpdateEncounter() {
     const newEncounter = { //set the values for the updated encounter
       encounterId: encounter.encounterId,
       description: description,
-      encounterType: encounter.encounterType,
+      encounterType: encounterType,
       locationId: encounter.locationId
     }
 
@@ -68,16 +68,25 @@ function UpdateEncounter() {
   }
 
   return ( //form for submiting updates to the encounter
-    <div className="container">
+    <div className="container mt-5">
     <form onSubmit={handleUpdate}>
-      <div className="form-group">
-        <label htmlFor="encounterTextBox">EncounterId:</label>
+      <div className="form-group pt-4">
+        <label htmlFor="encounterTextBox">Encounter Id</label>
         <input type="text" id="encounterTextBox" className="form-control" readOnly="readOnly" value={encounter.encounterId}/>
       </div>
       <div className="form-group">
         <label htmlFor="descriptionTextBox">Description:</label>
-        <input type="text" id="descriptionTextBox" className="form-control" onChange={handleDescriptionChange} defaultValue={encounter.description}/>
+        <input type="text" id="descriptionTextBox" className="form-control" onChange={handleDescriptionChange} />
       </div>
+      <div className="form-group">
+            <label htmlFor="encounterTypeDropDown">Encounter Type:</label>
+            <select id="encounterTypeDropDown" onChange={handleEncounterTypeChange} className="form-control">
+              <option value={1}>Visual</option>
+              <option value={2}>Auditory</option>
+              <option value={3}>Touch</option>
+              <option value={4}>Temperature</option>
+            </select>
+          </div>
       <button type="submit" className="btn btn-primary mt-2">Update</button>
     </form>
     </div>    
