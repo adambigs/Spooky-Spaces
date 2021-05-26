@@ -33,14 +33,13 @@ function Wishlist() {
     }
 
     return ( //map all values to an wishlist
-      <div className="card">
-        <h2 className="card-title ml-3">Wishlist for {username}</h2>
-        <ul className="list-group list-group-flush">
-          {wishlists.map(w => <WishlistItem key={w.wishlistId} wishlistId={w.wishlistId} username={w.username} 
-          locationId={w.locationId} deleteWishlistItem={deleteItem} />)}
-        </ul>
-      </div>   
-    );
+        <div className="card">
+          <h2 className="card-title ml-3">Wishlist</h2>
+          <ul className="list-group list-group-flush">
+            {wishlists.map(w => <WishlistItem key={w.wishlistId} wishlistId={w.wishlistId} username={w.username} locationId={w.locationId} />)}
+          </ul>
+        </div>   
+      );
 
 }
 

@@ -159,7 +159,7 @@ export default function NewMap(){
     }
 
     return ( 
-      <div>
+      <>
 
       <Search panTo={panTo} />
         
@@ -266,7 +266,7 @@ export default function NewMap(){
       
     </GoogleMap>
     
-    </div>
+    </>
     );
 }
 

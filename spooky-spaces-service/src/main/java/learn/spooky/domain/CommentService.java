@@ -29,6 +29,8 @@ public class CommentService {
         return repository.findByEncounter(encounterId);
     }
 
+    public Comment findById(int commentId) {return repository.findById(commentId);}
+
     public Result<Comment> add(Comment comment) {
         Result<Comment> result = new Result<>();
 
