@@ -32,14 +32,12 @@ public class WishListJdbcTemplateRepository implements WishListRepository {
 
     //Find the wishlist id that is associated with a given username
     @Override
-    public WishList findByUsername(String username) {
+    public List<WishList> findByUsername(String username) {
         final String sql = "select wishlist_id, username, location_id "
                 + "from wishlist "
                 + "where username = ?;";
 
-        return jdbcTemplate.query(sql, new WishListMapper(), username).stream()
-                .findFirst()
-                .orElse(null);
+        return jdbcTemplate.query(sql, new WishListMapper(), username);
     }
 
     //Add a username to the table, will create a wishlist_id

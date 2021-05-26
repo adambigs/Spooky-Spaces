@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
 
-function Wishlist({wishlistId, username, locationId}){
-  const [location, setLocation] = useState();
-
+function Wishlist({wishlistId, username, locationId, deleteWishlistItem}){
+  const [location, setLocation] = useState("");
 
   useEffect(() => { //get locations
     fetch(`http://localhost:8080/api/location/${locationId}`)
@@ -17,8 +16,8 @@ function Wishlist({wishlistId, username, locationId}){
     .catch(console.log);
   }, []);
 
-  const deleteWishlistItem = ()  => {
-    fetch(`http://localhost:8080/api/wishlist/${locationId}`, { method: "DELETE" })
+  const deleteById = ()  => {
+    fetch(`http://localhost:8080/api/wishlist/${username}/${locationId}`, { method: "DELETE" })
       .then((response) => {
         if (response.status === 204) {
           deleteWishlistItem(locationId);
@@ -32,13 +31,13 @@ function Wishlist({wishlistId, username, locationId}){
       })
       .catch(console.log);
   };
-
+  
   return(
     <li className="list-group-item">
-      Wishlist {username}
-      <button className="btn btn-secondary ml-2" onClick={deleteWishlistItem}>Delete</button>
-      {location.locationName} {location.address}
+      Name: {location.locationName} Address: {location.address}
+      <button className="btn btn-secondary ml-2" onClick={deleteById}>Delete</button>
     </li>
+    
   ); 
 }
 

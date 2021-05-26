@@ -6,8 +6,11 @@ import Button from './Button';
 import { Link } from 'react-router-dom';
 import { useHistory} from 'react-router-dom';
 
-function LocationList( { username }){
+function LocationList( { user }){
     const { id } = useParams();
+
+    const [encounters, setEncounters] = useState([]);
+
 
     const defaultLocation = {
       locationId: 0,
@@ -26,13 +29,13 @@ function LocationList( { username }){
       .then(response => response.json())
       .then(data => setLocation(data))
       .catch(error => console.log(error));
-  });
+  },[]);
 
   const history = useHistory();
-
+  
   const handleAdd = (event) => {
     let wishlist = {};
-    wishlist["username"] = username;
+    wishlist["username"] = user.username;
     wishlist["locationId"] = id;
     addWishlist(wishlist);
   }
@@ -73,8 +76,8 @@ function LocationList( { username }){
         .then(json => {
           setWishlists([...wishlists, json]);
           setMessages("");
-        })
-        .then(history.goBack()) 
+        }, [])
+        .then(history.push(`/wishlist/${wishlist.username}`)) 
         .catch(console.log);
     }
 
@@ -89,8 +92,13 @@ function LocationList( { username }){
       if (canSet) {
       addFetch(wishlist); //add wishlist item if no errors
       } else {
-      setMessages("Location Id is alread on wishlist");
+      setMessages("Location Id is already on wishlist");
       } 
+    }
+
+    const deleteEncounters = () => {
+    let newEncounters = [];
+      setEncounters(newEncounters);
     }
 
   return(
@@ -98,7 +106,8 @@ function LocationList( { username }){
     {location.locationName} {location.address}
     <Button text="❤️" onClick={handleAdd}/>
     <Link to={`/encounter/add/${id}`}><Button text="Add Encounter"/></Link>
-    {location.encounters.map(en => <Encounter key={en.encounterId} encounterId={en.encounterId} description={en.description} encounterType={en.encounterType}  />)}
+    {location.encounters.map(en => <Encounter key={en.encounterId} encounterId={en.encounterId}
+     description={en.description} encounterType={en.encounterType} deleteEncounter={deleteEncounters} />)}
     </div>   
   );
 }
