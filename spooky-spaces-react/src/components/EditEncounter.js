@@ -1,5 +1,6 @@
 import { useEffect,useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import Button from './Button';
 
 function UpdateEncounter() {
   const defaultEncounter = {
@@ -68,17 +69,20 @@ function UpdateEncounter() {
   }
 
   return ( //form for submiting updates to the encounter
-    <div className="container">
+    <div className="container mt-5">
     <form onSubmit={handleUpdate}>
-      <div className="form-group">
-        <label htmlFor="encounterTextBox">EncounterId:</label>
+      <div className="form-group pt-4">
+        <label htmlFor="encounterTextBox">Encounter Id</label>
         <input type="text" id="encounterTextBox" className="form-control" readOnly="readOnly" value={encounter.encounterId}/>
       </div>
       <div className="form-group">
-        <label htmlFor="descriptionTextBox">Description:</label>
+        <label htmlFor="descriptionTextBox">Description</label>
         <input type="text" id="descriptionTextBox" className="form-control" onChange={handleDescriptionChange} defaultValue={encounter.description}/>
       </div>
-      <button type="submit" className="btn btn-primary mt-2">Update</button>
+      <div className="mt-2">
+      <button type="submit" className="btn btn-info mx-1">Update</button>
+      <Button text="Cancel" onClick={() => history.goBack()} />
+      </div>
     </form>
     </div>    
   );

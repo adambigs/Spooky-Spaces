@@ -5,8 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18435975-94c6-4d83-88f0-f1a0e100006d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spooky-spaces-react/src/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/../spooky-spaces-react/src/bootstrap.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spooky-spaces-react/src/components/About.js" beforeDir="false" afterPath="$PROJECT_DIR$/../spooky-spaces-react/src/components/About.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spooky-spaces-react/src/components/Button.js" beforeDir="false" afterPath="$PROJECT_DIR$/../spooky-spaces-react/src/components/Button.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spooky-spaces-react/src/components/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/../spooky-spaces-react/src/components/Nav.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spooky-spaces-react/src/components/NewMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/../spooky-spaces-react/src/components/NewMap.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/learn/spooky/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/spooky/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/learn/spooky/domain/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/spooky/domain/CommentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,18 +35,16 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RunManager" selected="JUnit.WishListJdbcTemplateRepositoryTest.shouldAdd">
-    <configuration name="LocationJdbcTemplateRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.App">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="learn.spooky.App" />
       <module name="spooky-spaces-service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="learn.spooky.data.*" />
+          <option name="PATTERN" value="learn.spooky.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="learn.spooky.data" />
-      <option name="MAIN_CLASS_NAME" value="learn.spooky.data.LocationJdbcTemplateRepositoryTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -107,13 +112,16 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.App" />
         <item itemvalue="JUnit.WishListJdbcTemplateRepositoryTest.shouldAdd" />
         <item itemvalue="JUnit.WishListJdbcTemplateRepositoryTest" />
         <item itemvalue="JUnit.WishListServiceTest" />
         <item itemvalue="JUnit.LocationServiceTest" />
-        <item itemvalue="JUnit.LocationJdbcTemplateRepositoryTest" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SQLPlugin.ProjectConfiguration">
+    <queries />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

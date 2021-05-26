@@ -25,6 +25,15 @@ public class CommentController {
     }
 
     @GetMapping("/{encounterId}")
+    public ResponseEntity<Comment> findById(@PathVariable int commentId){
+        Comment comment = service.findById(commentId);
+        if (comment== null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(comment);
+    }
+
+    @GetMapping("/{encounterId}")
     public ResponseEntity<List> findByEncounter(@PathVariable int encounterId){
         List<Comment> comments= service.findByEncounter(encounterId);
         if (comments == null) {

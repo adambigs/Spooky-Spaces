@@ -34,11 +34,9 @@ function Wishlist({wishlistId, username, locationId}){
   };
 
   return(
-    <li className="list-group-item">
-      Wishlist {username}
-      <button className="btn btn-secondary ml-2" onClick={deleteWishlistItem}>Delete</button>
-      {location.locationName} {location.address}
-    </li>
+    <div className="card mt-3">
+      {location.locationName}: {location.address} <button className="btn btn-info ms-3" onClick={deleteWishlistItem}>Delete</button>
+    </div>  
   ); 
 }
 

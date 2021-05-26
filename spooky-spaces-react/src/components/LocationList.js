@@ -94,11 +94,14 @@ function LocationList( { username }){
     }
 
   return(
-    <div className="container text-center">
-    {location.locationName} {location.address}
-    <Button text="❤️" onClick={handleAdd}/>
-    <Link to={`/encounter/add/${id}`}><Button text="Add Encounter"/></Link>
+    <div className="container text-center mt-5">
+    <div className="row">
+    <h3 className="mt-4">{location.locationName} <Button text="❤️" onClick={handleAdd}/> <Link to={`/encounter/add/${id}`}><Button text="Add Encounter"/></Link></h3>
+    <h5>{location.address}</h5>
+    </div>
+    <div>
     {location.encounters.map(en => <Encounter key={en.encounterId} encounterId={en.encounterId} description={en.description} encounterType={en.encounterType}  />)}
+    </div>
     </div>   
   );
 }
