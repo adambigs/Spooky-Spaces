@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import Button from './Button';
 
-function EditComment({ username }) {
+function EditComment({ user }) {
     const defaultComment = {
       commentId: 0,
       username: "",
@@ -12,9 +12,10 @@ function EditComment({ username }) {
     };
   
     const [comment, setComment] = useState(defaultComment);
-  
+    const [encounterId, setEncounterId] = useState(comment.encounterId);
     const [rating, setRating] = useState(0);
     const [description, setDescription] = useState("");
+    const [username, setUsername] = useState(user.username);
   
     const { id } = useParams();
     const history = useHistory();
@@ -31,9 +32,10 @@ function EditComment({ username }) {
   
       const newComment = {
         commentId: id,
-        rating: comment.rating,
-        description: description.length > 0 ? description : comment.description,
-        // encounterId: encounter
+        rating: rating,
+        description: description.length > 0 ? description : description,
+        encounterId: comment.encounterId,
+        username: user.username
       };
   
       const init = {
@@ -132,6 +134,9 @@ function EditComment({ username }) {
               5
             </label>
           </div>
+
+          <input type="text" value={comment.encounterId} className="d-none" ></input>
+
           <div className="mb-3">
             <label for="commentText" class="form-label">
               Comment

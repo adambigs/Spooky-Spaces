@@ -106,7 +106,7 @@ const auth = {
             {user ? <AddComment user={user} /> : <Redirect to="/login" />}
             </Route>
             <Route path="/comment/edit/:id">
-            {user ? <EditComment /> : <Redirect to="/login" />}
+            {user ? <EditComment user={user}/> : <Redirect to="/login" />}
             </Route>
             <Route path="/wishlist/:username">
             {user ? <Wishlist/> : <Redirect to="/login" />}
