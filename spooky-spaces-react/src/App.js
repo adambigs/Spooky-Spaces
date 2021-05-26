@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import { useState } from 'react';
 import jwt_decode from 'jwt-decode';
+import "./bootstrap.min.css";
 import Home from "./components/Home";
 import About from "./components/About";
 import NotFound from "./components/NotFound";
@@ -77,6 +78,7 @@ const auth = {
   authenticate,
   logout
 }
+
   return (
     <div className="App">
     <AuthContext.Provider value={auth}> 
@@ -106,7 +108,7 @@ const auth = {
             <Route path="/comment/edit/:id">
             {user ? <EditComment /> : <Redirect to="/login" />}
             </Route>
-            <Route path="/wishlist/:username">
+            <Route path="/wishlist/:username"  username={user}>
             {user ? <Wishlist/> : <Redirect to="/login" />}
             </Route>
             <Route path="/login">

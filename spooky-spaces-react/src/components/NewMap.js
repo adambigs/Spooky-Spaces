@@ -10,7 +10,7 @@ import usePlacesAutocomplete, {
   getLatLng,
 } from "use-places-autocomplete";
 
-import {useParams, useHistory } from "react-router-dom";
+import {useParams, useHistory, Link } from "react-router-dom";
 import {
   Combobox,
   ComboboxInput,
@@ -86,7 +86,7 @@ export default function NewMap(){
         })
         .then(json => setLocations(json))
         .catch(console.log);
-    });
+    },[]);
 
     const onMapClick = React.useCallback((e) => { //when the map is clicked a new ghost maker is added
     setMarkers((current) => [
@@ -144,7 +144,7 @@ export default function NewMap(){
         .then(json => {
           setLocations([...locations, json]);
           setMessages("");
-        })
+        }, [])
         .catch(console.log);
     }
 
@@ -256,7 +256,7 @@ export default function NewMap(){
               Ghost Alert!
             </h2>
             <div className="text-center">
-            <h4 className="text-primary"><u><a href={`/location/${selected2.locationId}`}>{name}</a></u></h4>
+            <h4 className="text-primary"><u><Link to={`/location/${selected2.locationId}`}>{name}</Link></u></h4>
             <p> {address} </p>
             </div>
           </div>
