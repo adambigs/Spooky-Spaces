@@ -24,7 +24,7 @@ public class CommentController {
         return service.findAll();
     }
 
-    @GetMapping("/{encounterId}")
+    @GetMapping("/{commentId}")
     public ResponseEntity<Comment> findById(@PathVariable int commentId){
         Comment comment = service.findById(commentId);
         if (comment== null) {

@@ -5,15 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18435975-94c6-4d83-88f0-f1a0e100006d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../spooky-spaces-react/src/bootstrap.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/../spooky-spaces-react/src/bootstrap.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spooky-spaces-react/src/components/About.js" beforeDir="false" afterPath="$PROJECT_DIR$/../spooky-spaces-react/src/components/About.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spooky-spaces-react/src/components/Button.js" beforeDir="false" afterPath="$PROJECT_DIR$/../spooky-spaces-react/src/components/Button.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spooky-spaces-react/src/components/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/../spooky-spaces-react/src/components/Nav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../spooky-spaces-react/src/components/NewMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/../spooky-spaces-react/src/components/NewMap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/learn/spooky/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/spooky/controller/CommentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/learn/spooky/domain/CommentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/spooky/domain/CommentService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
