@@ -31,12 +31,22 @@ function AddEncounter() {
       }
     }
 
-    if (canSet) {
+    const addEncounter = (encounter) => {
+      let canSet = true;
+
+      for (let i = 0; i < encounters.length; i++) { //make sure the encounterId does not already exist
+        if (encounter.encounterId === encounters[i].encounterId) {
+          canSet = false;
+        }
+      }
+
+      if (canSet) {
       addFetch(encounter); //add encounter if no errors
-    } else {
+      } else {
       setMessages("Encounter Id is taken");
-    }
-  };
+      } 
+  }
+
 
   useEffect(() => {
     //get the list of all encounters
@@ -85,7 +95,7 @@ function AddEncounter() {
 
   const handleEncounterTypeChange = (event) => {
     setType(event.target.value);
-  }
+  };
 
   return ( //form to get values for adding an encounter
     <div className="card">
