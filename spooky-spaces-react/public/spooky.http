@@ -70,13 +70,30 @@ Content-Type: application/json
 
 ###
 
+PUT /api/comment/2 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json 
 
+{  
+   "commentId": 2,
+   "encounterId": 2,
+   "username": "bob",
+   "description": "update works",
+   "rating": 5
+   
+}
 
-GET /api/comment/1 HTTP/1.1
+###
+
+GET /api/comment HTTP/1.1
 Host: localhost:8080
 
 ###
 
+GET /api/comment/2 HTTP/1.1
+Host: localhost:8080
+
+###
 
 POST /api/wishlist HTTP/1.1
 Host: localhost:8080
