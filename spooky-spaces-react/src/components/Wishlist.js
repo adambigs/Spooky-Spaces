@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import WishlistItem from './WishlistItem';
 
-function Wishlist({ user }) {
+function Wishlist({ username }) {
     const [wishlists, setWishlists] = useState([]); //List of all wishlist
     const [messages, setMessages] = useState(""); //Any error messages
 
     useEffect(() => { //get the list of all wishlist
-        fetch(`http://localhost:8080/api/wishlist/${user}`)
+        fetch(`http://localhost:8080/api/wishlist/${username}`)
         .then(response => {
           if (response.status !== 200) {
           console.log(response);

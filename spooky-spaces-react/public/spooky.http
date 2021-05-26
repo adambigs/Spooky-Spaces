@@ -68,4 +68,22 @@ Content-Type: application/json
    
 }
 
+###
+
+POST /api/wishlist HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json 
+
+{  
+   "username": "a@b.com",
+   "locationId": 1
+   
+}
+
+###
+
+GET /api/wishlist/a@b.com HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json 
+
 
