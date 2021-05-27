@@ -49,15 +49,6 @@ public class WishListServiceTest {
     }
 
     @Test
-    void ShouldNotUpdateInvalidId(){
-        WishList wishList = makeWishList();
-        wishList.setWishListId(-1);
-
-        Result<WishList> actual = service.update(wishList);
-        assertEquals(ResultType.INVALID, actual.getType());
-    }
-
-    @Test
     void ShouldNotUpdateNonExistId(){
         WishList wishList = makeWishList();
         wishList.setWishListId(100);

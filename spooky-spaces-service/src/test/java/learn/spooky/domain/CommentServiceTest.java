@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 public class CommentServiceTest {
@@ -70,6 +71,8 @@ public class CommentServiceTest {
         Comment comment = makeComment();
         comment.setCommentId(1);
 
+        when(repository.update(comment)).thenReturn(true);
+
         Result<Comment> actual = service.update(comment);
         assertEquals(ResultType.SUCCESS, actual.getType());
     }
@@ -80,7 +83,7 @@ public class CommentServiceTest {
         comment.setCommentId(0);
 
         Result<Comment> actual = service.update(comment);
-        assertEquals(ResultType.INVALID, actual.getType());
+        assertEquals(ResultType.NOT_FOUND, actual.getType());
     }
     //should not update if rating is less than 1
     @Test
@@ -108,13 +111,6 @@ public class CommentServiceTest {
 
         Result<Comment> actual = service.add(comment);
         assertEquals(ResultType.INVALID, actual.getType());
-    }
-
-    //should delete
-    @Test
-    void shouldDelete() {
-        Result<Comment> actual = service.deleteById(2);
-        assertEquals(ResultType.SUCCESS, actual.getType());
     }
 
     Comment makeComment() {

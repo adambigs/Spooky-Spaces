@@ -48,13 +48,13 @@ public class CommentJdbcTemplateRepositoryTest {
     void shouldFindById(){
         Comment comment = repository.findById(1);
         assertNotNull(comment);
-        assertEquals("swagmaster9000", comment.getUsername());
+        assertEquals("cooldude69", comment.getUsername());
     }
 
     @Test
     void shouldNotFindById(){
         Comment comment = repository.findById(1000);
-        assertNotNull(comment);
+        assertNull(comment);
     }
 
     @Test

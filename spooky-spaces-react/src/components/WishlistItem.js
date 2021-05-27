@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function Wishlist({wishlistId, username, locationId, deleteWishlistItem}){
+function Wishlist({wishlistId, username, locationId, deleteItem}){
   const [location, setLocation] = useState("");
 
   useEffect(() => { //get locations
@@ -20,7 +20,7 @@ function Wishlist({wishlistId, username, locationId, deleteWishlistItem}){
     fetch(`http://localhost:8080/api/wishlist/${username}/${locationId}`, { method: "DELETE" })
       .then((response) => {
         if (response.status === 204) {
-          deleteWishlistItem(locationId);
+          deleteItem(locationId);
         } else if (response.status === 404) {
           return Promise.reject("Comment");
         } else {
@@ -34,7 +34,7 @@ function Wishlist({wishlistId, username, locationId, deleteWishlistItem}){
   
   return(
     <div className="container mt-3">
-    <div className="card pt pb-3 text-center">
+    <div className="card pt-3 pb-3 text-center">
       <div className="row">
       <div className="col-6">
       <h5>{location.locationName}: {location.address}</h5>

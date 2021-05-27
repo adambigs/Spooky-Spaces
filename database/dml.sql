@@ -20,7 +20,8 @@ values
 ('Hilton Garden Inn', '611 N Broadway', '43.03801065', '-87.90791599'),
 ('Ambassador Hotel', '2308 W Wisconsin Ave', '43.03955649', '-87.94191908'),
 ('Skylight Music Theater', '158 N Broadway', '43.03238409', '-87.90675348'),
-('Sunset Playhouse', '700 Wall St, Elm Grove, WI', '43.04050189', '-88.07807748');
+('Sunset Playhouse', '700 Wall St, Elm Grove, WI', '43.04050189', '-88.07807748'),
+('The Bean', '201 E Randolph St, Chicago, IL 60602', '41.88281294044604', '-87.62332535975683');
 
 insert into encounter
 (encounter_description, location_id, encounter_type)
@@ -46,4 +47,6 @@ values
 
 insert into comments
 (username, rating, comment_text, encounter_id)
-values ('cooldude69', '5', 'This place was so spooky. I was scared.', 1);
+values ('GhostHunter1980', '5', 'This place was so spooky. I was scared.', 1),
+('ScrayBOi12', '5', 'So scary, Im still shaking.', 1)
+;

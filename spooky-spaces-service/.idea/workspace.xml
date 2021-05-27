@@ -5,11 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="18435975-94c6-4d83-88f0-f1a0e100006d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Photos/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Photos/10.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Photos/11.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Photos/12.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Photos/13.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Photos/14.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Photos/15.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Photos/16.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Photos/17.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Photos/18.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Photos/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Photos/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Photos/4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Photos/5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Photos/6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Photos/7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Photos/8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Photos/9.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../spooky-spaces-react/src/components/Encounter.js" beforeDir="false" afterPath="$PROJECT_DIR$/../spooky-spaces-react/src/components/Encounter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../spooky-spaces-react/src/components/LocationList.js" beforeDir="false" afterPath="$PROJECT_DIR$/../spooky-spaces-react/src/components/LocationList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/learn/spooky/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/learn/spooky/controller/CommentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/learn/spooky/data/CommentJdbcTemplateRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/learn/spooky/data/CommentJdbcTemplateRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/learn/spooky/data/LocationJdbcTemplateRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/learn/spooky/data/LocationJdbcTemplateRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/learn/spooky/data/WishListJdbcTemplateRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/learn/spooky/data/WishListJdbcTemplateRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/learn/spooky/domain/CommentServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/learn/spooky/domain/CommentServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/learn/spooky/domain/WishListServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/learn/spooky/domain/WishListServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,21 +53,23 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
-  <component name="RunManager" selected="Application.App">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="learn.spooky.App" />
+  <component name="RunManager" selected="JUnit.EncounterServiceTest">
+    <configuration name="EncounterJdbcTemplateRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="spooky-spaces-service" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="learn.spooky.*" />
+          <option name="PATTERN" value="learn.spooky.data.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="learn.spooky.data" />
+      <option name="MAIN_CLASS_NAME" value="learn.spooky.data.EncounterJdbcTemplateRepositoryTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LocationServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="EncounterServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="spooky-spaces-service" />
       <extension name="coverage">
         <pattern>
@@ -55,7 +78,22 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="learn.spooky.domain" />
-      <option name="MAIN_CLASS_NAME" value="learn.spooky.domain.LocationServiceTest" />
+      <option name="MAIN_CLASS_NAME" value="learn.spooky.domain.EncounterServiceTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LocationJdbcTemplateRepositoryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="spooky-spaces-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="learn.spooky.data.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="learn.spooky.data" />
+      <option name="MAIN_CLASS_NAME" value="learn.spooky.data.LocationJdbcTemplateRepositoryTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -76,7 +114,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WishListJdbcTemplateRepositoryTest.shouldAdd" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="WishListJdbcTemplateRepositoryTest.shouldNotFindInvalidId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="spooky-spaces-service" />
       <extension name="coverage">
         <pattern>
@@ -86,34 +124,19 @@
       </extension>
       <option name="PACKAGE_NAME" value="learn.spooky.data" />
       <option name="MAIN_CLASS_NAME" value="learn.spooky.data.WishListJdbcTemplateRepositoryTest" />
-      <option name="METHOD_NAME" value="shouldAdd" />
+      <option name="METHOD_NAME" value="shouldNotFindInvalidId" />
       <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="WishListServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="spooky-spaces-service" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="learn.spooky.domain.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="learn.spooky.domain" />
-      <option name="MAIN_CLASS_NAME" value="learn.spooky.domain.WishListServiceTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.App" />
-        <item itemvalue="JUnit.WishListJdbcTemplateRepositoryTest.shouldAdd" />
+        <item itemvalue="JUnit.EncounterServiceTest" />
+        <item itemvalue="JUnit.LocationJdbcTemplateRepositoryTest" />
+        <item itemvalue="JUnit.EncounterJdbcTemplateRepositoryTest" />
         <item itemvalue="JUnit.WishListJdbcTemplateRepositoryTest" />
-        <item itemvalue="JUnit.WishListServiceTest" />
-        <item itemvalue="JUnit.LocationServiceTest" />
+        <item itemvalue="JUnit.WishListJdbcTemplateRepositoryTest.shouldNotFindInvalidId" />
       </list>
     </recent_temporary>
   </component>
@@ -148,6 +171,18 @@
       <FILTER>learn.spooky.domain.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/spooky_spaces_service$LocationServiceTest.ic" NAME="LocationServiceTest Coverage Results" MODIFIED="1621454043367" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>learn.spooky.domain.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/spooky_spaces_service$WishListJdbcTemplateRepositoryTest.ic" NAME="WishListJdbcTemplateRepositoryTest Coverage Results" MODIFIED="1622127211411" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>learn.spooky.data.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/spooky_spaces_service$EncounterJdbcTemplateRepositoryTest.ic" NAME="EncounterJdbcTemplateRepositoryTest Coverage Results" MODIFIED="1622127265270" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>learn.spooky.data.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/spooky_spaces_service$LocationJdbcTemplateRepositoryTest.ic" NAME="LocationJdbcTemplateRepositoryTest Coverage Results" MODIFIED="1622127353306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>learn.spooky.data.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/spooky_spaces_service$EncounterServiceTest.ic" NAME="EncounterServiceTest Coverage Results" MODIFIED="1622127408042" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>learn.spooky.domain.*</FILTER>
     </SUITE>
   </component>

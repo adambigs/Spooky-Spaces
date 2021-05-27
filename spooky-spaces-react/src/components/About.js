@@ -1,11 +1,12 @@
-/** @format */
-
 function About() {
 	return (
 		<>
 			<div className="container mt-5 pt-4 text-center">
-				<div className="row mb-3">
-					<h3>About Spooky Spaces</h3>
+				<div className="row pt-3 mb-3">
+				<div className="mb-3">
+					<img alt="ghost-logo" src="/ghost3.png"/>
+				</div>
+				<h1>About Us</h1>
 				</div>
 				<div className="row">
 					<p>
