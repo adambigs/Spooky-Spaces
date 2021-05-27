@@ -91,6 +91,7 @@ function UpdateEncounter() {
 						type="text"
 						id="descriptionTextBox"
 						className="form-control"
+						defaultValue={encounter.description}
 						onChange={handleDescriptionChange}
 					/>
 				</div>

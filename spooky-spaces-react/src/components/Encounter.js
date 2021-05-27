@@ -54,7 +54,7 @@ function Encounter({
 	}, []); //THERE BRACKETS LOSE THEIR MINDS
 
 	return (
-		<div className="card pt-2 bg-secondary text-white">
+		<div className="card mt-2 pt-2 bg-secondary text-white">
 			<div className="row">
 				<div className="col-6">
 					<p>Type: {encounter.encounterType}</p>
